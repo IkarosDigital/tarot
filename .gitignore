@@ -1,0 +1,17 @@
+# Environment Variables
+.env
+
+# Python
+__pycache__/
+
+# Node
+node_modules/
+
+# Cache
+cache/
+
+# Build
+.vite/
+
+# Testing
+.pytest_cache/

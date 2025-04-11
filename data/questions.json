@@ -1,0 +1,116 @@
+{
+    "questions": [
+        {
+            "text": "🎭 In social situations, you typically:",
+            "category": "EI",
+            "options": [
+                {
+                    "text": "Feel energized by interacting with others",
+                    "score": { "E": 2 }
+                },
+                {
+                    "text": "Need time alone to recharge",
+                    "score": { "I": 2 }
+                }
+            ]
+        },
+        {
+            "text": "💭 When solving problems, you prefer to:",
+            "category": "SN",
+            "options": [
+                {
+                    "text": "Focus on concrete facts and details",
+                    "score": { "S": 2 }
+                },
+                {
+                    "text": "Explore theoretical possibilities",
+                    "score": { "N": 2 }
+                }
+            ]
+        },
+        {
+            "text": "⚖️ When making decisions, you primarily consider:",
+            "category": "TF",
+            "options": [
+                {
+                    "text": "Logic and objective analysis",
+                    "score": { "T": 2 }
+                },
+                {
+                    "text": "Personal values and feelings",
+                    "score": { "F": 2 }
+                }
+            ]
+        },
+        {
+            "text": "📅 You prefer to:",
+            "category": "JP",
+            "options": [
+                {
+                    "text": "Plan and organize in advance",
+                    "score": { "J": 2 }
+                },
+                {
+                    "text": "Stay flexible and adapt as you go",
+                    "score": { "P": 2 }
+                }
+            ]
+        },
+        {
+            "text": "📚 When learning something new, you focus on:",
+            "category": "SN",
+            "options": [
+                {
+                    "text": "Practical applications and examples",
+                    "score": { "S": 2 }
+                },
+                {
+                    "text": "Understanding underlying concepts",
+                    "score": { "N": 2 }
+                }
+            ]
+        },
+        {
+            "text": "💝 In conflicts, you tend to:",
+            "category": "TF",
+            "options": [
+                {
+                    "text": "Seek objective truth and fairness",
+                    "score": { "T": 2 }
+                },
+                {
+                    "text": "Consider everyone's feelings and harmony",
+                    "score": { "F": 2 }
+                }
+            ]
+        },
+        {
+            "text": "🌟 In group discussions, you are more:",
+            "category": "EI",
+            "options": [
+                {
+                    "text": "Actively participating and sharing ideas",
+                    "score": { "E": 2 }
+                },
+                {
+                    "text": "Observing and processing internally",
+                    "score": { "I": 2 }
+                }
+            ]
+        },
+        {
+            "text": "🎯 In your work style, you:",
+            "category": "JP",
+            "options": [
+                {
+                    "text": "Prefer clear deadlines and structure",
+                    "score": { "J": 2 }
+                },
+                {
+                    "text": "Work best with flexibility and spontaneity",
+                    "score": { "P": 2 }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,175 @@
+{
+    "keys": [
+      {
+        "name": "The Juggler or Magician",
+        "symbolism": {
+          "description": "The figure of a juggler stands before a table covered with the appliances of his art",
+          "hand_positions": {
+            "left_hand": "Uprised holding a wand (or cup in some packs)",
+            "right_hand": "Pointing downwards"
+          },
+          "attire": "Wears a cap of maintenance like that of kings, forming an aureole around his head",
+          "body_shape": "His body and arms form the shape of the Hebrew letter Aleph"
+        },
+        "meaning": {
+          "upright": "Symbolizes Will and manifestation",
+          "reversed": "Can indicate manipulation or poor planning"
+        },
+        "hebrew_letter": "Aleph"
+      },
+      {
+        "name": "The High Priestess",
+        "symbolism": {
+          "description": "A female figure seated between two pillars",
+          "attributes": {
+            "scroll": "Holds a scroll or book of wisdom",
+            "pillars": "Sits between pillars of duality"
+          }
+        },
+        "meaning": {
+          "upright": "Intuition, mystery, inner knowledge",
+          "reversed": "Hidden motives, need for introspection"
+        }
+      },
+      {
+        "name": "The Empress",
+        "symbolism": {
+          "description": "A crowned woman seated on a throne",
+          "attributes": {
+            "crown": "Wears a crown of twelve stars",
+            "scepter": "Holds a scepter of power"
+          }
+        },
+        "meaning": {
+          "upright": "Abundance, nurturing, fertility",
+          "reversed": "Creative block, dependence on others"
+        }
+      },
+      {
+        "name": "The Emperor",
+        "symbolism": {
+          "description": "A crowned male figure seated on a throne",
+          "attributes": {
+            "throne": "Sits on a stone throne",
+            "orb": "Holds an orb and scepter"
+          }
+        },
+        "meaning": {
+          "upright": "Authority, structure, leadership",
+          "reversed": "Domination, rigidity, lack of flexibility"
+        }
+      },
+      {
+        "name": "The Hierophant",
+        "symbolism": {
+          "description": "A religious figure seated between two pillars",
+          "attributes": {
+            "staff": "Holds a triple cross-staff",
+            "hand": "Raises hand in blessing"
+          }
+        },
+        "meaning": {
+          "upright": "Tradition, conformity, belief systems",
+          "reversed": "Challenge to beliefs, unconventionality"
+        }
+      },
+      {
+        "name": "The Lovers",
+        "symbolism": {
+          "description": "Two figures with an angel above them",
+          "attributes": {
+            "angel": "Blessing from above",
+            "figures": "Male and female in harmony"
+          }
+        },
+        "meaning": {
+          "upright": "Choice, harmony, relationships",
+          "reversed": "Disharmony, poor choices, imbalance"
+        }
+      },
+      {
+        "name": "The Chariot",
+        "symbolism": {
+          "description": "A figure in a chariot drawn by sphinxes",
+          "attributes": {
+            "sphinxes": "Black and white sphinxes",
+            "armor": "Wears ceremonial armor"
+          }
+        },
+        "meaning": {
+          "upright": "Victory, willpower, determination",
+          "reversed": "Lack of direction, aggression"
+        }
+      },
+      {
+        "name": "Strength",
+        "symbolism": {
+          "description": "A woman gently closing a lion's mouth",
+          "attributes": {
+            "lion": "Taming the wild beast",
+            "infinity": "Infinity symbol above head"
+          }
+        },
+        "meaning": {
+          "upright": "Inner strength, patience, compassion",
+          "reversed": "Self-doubt, weakness, lack of confidence"
+        }
+      },
+      {
+        "name": "The Hermit",
+        "symbolism": {
+          "description": "An old man holding a lantern",
+          "attributes": {
+            "lantern": "Light of wisdom",
+            "staff": "Staff of knowledge"
+          }
+        },
+        "meaning": {
+          "upright": "Inner guidance, contemplation, solitude",
+          "reversed": "Isolation, loneliness, withdrawal"
+        }
+      },
+      {
+        "name": "Wheel of Fortune",
+        "symbolism": {
+          "description": "A wheel with various symbols",
+          "attributes": {
+            "wheel": "Turning wheel of fate",
+            "creatures": "Four creatures at corners"
+          }
+        },
+        "meaning": {
+          "upright": "Cycles, destiny, turning point",
+          "reversed": "Bad luck, resistance to change"
+        }
+      },
+      {
+        "name": "Justice",
+        "symbolism": {
+          "description": "A figure with scales and a sword",
+          "attributes": {
+            "scales": "Balancing justice",
+            "sword": "Cutting through ignorance"
+          }
+        },
+        "meaning": {
+          "upright": "Fairness, accountability, law",
+          "reversed": "Dishonesty, imbalance, injustice"
+        }
+      },
+      {
+        "name": "The Hanged Man",
+        "symbolism": {
+          "description": "A figure hanging upside down",
+          "attributes": {
+            "position": "Sacrificial position",
+            "face": "Serene expression"
+          }
+        },
+        "meaning": {
+          "upright": "Sacrifice, letting go, new perspective",
+          "reversed": "Resistance to change, delay"
+        }
+      }
+    ]
+}

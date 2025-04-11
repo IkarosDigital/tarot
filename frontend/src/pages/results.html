@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Reading - Mystic Tarot NFT</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script type="module" src="../main.ts"></script>
+    <script src="../components/header.js"></script>
+    <script src="../components/loading-spinner.ts"></script>
+</head>
+<body>
+    <div class="app-container">
+        <app-header></app-header>
+
+        <main class="results-container">
+            <loading-spinner 
+                id="results-loader"
+                size="60px"
+                message="Loading your reading..."
+                style="display: none;">
+            </loading-spinner>
+
+            <div id="resultsContent" style="display: none;">
+                <section class="mbti-results">
+                    <h2>Your Personality Type</h2>
+                    <div id="mbtiType" class="mbti-type"></div>
+                    <div id="mbtiDescription" class="mbti-description"></div>
+                </section>
+
+                <section class="tarot-results">
+                    <h2>Your Tarot Reading</h2>
+                    <div id="cardContainer" class="card-container">
+                        <!-- Cards will be inserted here -->
+                    </div>
+                </section>
+
+                <section class="actions">
+                    <button id="mintBtn" class="btn-primary" onclick="mintNFT()" style="display: none;">
+                        Mint as NFT
+                    </button>
+                    <button id="saveBtn" class="btn-secondary" onclick="saveReading()">
+                        Save Reading
+                    </button>
+                    <button id="shareBtn" class="btn-secondary" onclick="shareReading()">
+                        Share Reading
+                    </button>
+                </section>
+
+                <div id="saveModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <h3>Save Your Reading</h3>
+                        <p>Enter your email to receive your reading:</p>
+                        <input type="email" id="emailInput" placeholder="your@email.com">
+                        <div class="modal-actions">
+                            <button onclick="submitEmail()" class="btn-primary">Save</button>
+                            <button onclick="closeModal()" class="btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p> 2024 Mystic Tarot NFT. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { errorHandler, ErrorType } from '../utils/error-handler';
+        import { toast } from '../components/toast';
+        import { loadingManager, LoadingState } from '../utils/loading-state';
+
+        let readingData = null;
+        const resultsLoader = document.getElementById('results-loader');
+        const resultsContent = document.getElementById('resultsContent');
+
+        async function loadResults() {
+            try {
+                loadingManager.startLoading({
+                    id: 'results-loader',
+                    message: 'Loading your reading...'
+                });
+                resultsLoader.style.display = 'flex';
+
+                // Get result data from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const resultParam = urlParams.get('result');
+                
+                if (!resultParam) {
+                    throw new Error('No reading data found');
+                }
+
+                readingData = JSON.parse(decodeURIComponent(resultParam));
+                
+                // Check wallet connection for minting option
+                const state = await window.modal.getState();
+                const mintBtn = document.getElementById('mintBtn');
+                if (state.isConnected) {
+                    mintBtn.style.display = 'block';
+                }
+
+                await displayResults(readingData);
+                
+                loadingManager.finishLoading('results-loader', true);
+                resultsLoader.style.display = 'none';
+                resultsContent.style.display = 'block';
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message, {
+                    action: errorDetails.retry ? {
+                        text: 'Retry',
+                        onClick: () => loadResults()
+                    } : undefined
+                });
+                loadingManager.finishLoading('results-loader', false);
+            }
+        }
+
+        async function displayResults(data) {
+            // Display MBTI results
+            document.getElementById('mbtiType').textContent = data.mbtiType;
+            document.getElementById('mbtiDescription').textContent = data.mbtiDescription;
+
+            // Display cards with animation
+            const cardContainer = document.getElementById('cardContainer');
+            cardContainer.innerHTML = '';
+
+            for (let i = 0; i < data.cards.length; i++) {
+                const card = data.cards[i];
+                await new Promise(resolve => setTimeout(resolve, 500)); // Delay between cards
+                
+                const cardElement = document.createElement('div');
+                cardElement.className = 'tarot-card';
+                cardElement.innerHTML = `
+                    <img src="${card.imageUrl}" alt="${card.name}">
+                    <h3>${card.name}</h3>
+                    <p>${card.meaning}</p>
+                `;
+                cardContainer.appendChild(cardElement);
+                
+                // Animate card entrance
+                cardElement.style.animation = 'cardReveal 0.5s ease-out forwards';
+            }
+        }
+
+        async function mintNFT() {
+            try {
+                loadingManager.startLoading({
+                    id: 'mint-nft',
+                    message: 'Preparing to mint...'
+                });
+
+                const state = await window.modal.getState();
+                if (!state.isConnected) {
+                    throw new Error('Please connect your wallet first');
+                }
+
+                loadingManager.updateProgress('mint-nft', 30, 'Generating metadata...');
+                
+                const response = await fetch('/api/mint-nft', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        reading: readingData,
+                        walletAddress: state.address
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to mint NFT');
+                }
+
+                loadingManager.updateProgress('mint-nft', 70, 'Confirming transaction...');
+                const result = await response.json();
+                
+                loadingManager.finishLoading('mint-nft', true);
+                toast.success('Successfully minted your NFT!', {
+                    action: {
+                        text: 'View',
+                        onClick: () => window.open(result.openseaUrl, '_blank')
+                    }
+                });
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message, {
+                    action: errorDetails.retry ? {
+                        text: 'Retry',
+                        onClick: () => mintNFT()
+                    } : undefined
+                });
+                loadingManager.finishLoading('mint-nft', false);
+            }
+        }
+
+        async function saveReading() {
+            const modal = document.getElementById('saveModal');
+            modal.style.display = 'block';
+        }
+
+        async function submitEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (!email) {
+                toast.error('Please enter a valid email address');
+                return;
+            }
+
+            try {
+                loadingManager.startLoading({
+                    id: 'save-reading',
+                    message: 'Saving your reading...'
+                });
+
+                const response = await fetch('/api/save-reading', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email,
+                        reading: readingData
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to save reading');
+                }
+
+                loadingManager.finishLoading('save-reading', true);
+                toast.success('Reading saved! Check your email.');
+                closeModal();
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message, {
+                    action: errorDetails.retry ? {
+                        text: 'Retry',
+                        onClick: () => submitEmail()
+                    } : undefined
+                });
+                loadingManager.finishLoading('save-reading', false);
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('saveModal');
+            modal.style.display = 'none';
+        }
+
+        async function shareReading() {
+            try {
+                if (navigator.share) {
+                    await navigator.share({
+                        title: 'My Mystic Tarot Reading',
+                        text: `Check out my ${readingData.mbtiType} personality type and tarot reading!`,
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback to copying link
+                    await navigator.clipboard.writeText(window.location.href);
+                    toast.success('Link copied to clipboard!');
+                }
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message);
+            }
+        }
+
+        // Initialize
+        loadResults();
+
+        // Add loading state listener for minting
+        loadingManager.addListener('mint-nft', (state, message, progress) => {
+            const mintBtn = document.getElementById('mintBtn');
+            if (state === LoadingState.LOADING) {
+                mintBtn.disabled = true;
+                mintBtn.innerHTML = `
+                    <loading-spinner 
+                        size="20px"
+                        message="${message || 'Minting...'}"
+                        progress="${progress || 0}">
+                    </loading-spinner>
+                `;
+            } else {
+                mintBtn.disabled = false;
+                mintBtn.textContent = 'Mint as NFT';
+            }
+        });
+    </script>
+</body>
+</html>

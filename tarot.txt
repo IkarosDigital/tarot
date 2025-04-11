@@ -1,0 +1,199 @@
+{
+  "suits": [
+    {
+      "name": "Cups",
+      "symbolism": {
+        "description": "Represents emotions, relationships, and connections.",
+        "elements": "Water, symbolizing intuition and feelings."
+      },
+      "meanings": {
+        "upright": "Indicates love, joy, and emotional fulfillment.",
+        "reversed": "Can suggest emotional instability or disconnection."
+      }
+    },
+    {
+      "name": "Wands",
+      "symbolism": {
+        "description": "Symbolizes action, inspiration, and creativity.",
+        "elements": "Fire, representing passion and energy."
+      },
+      "meanings": {
+        "upright": "Embodies ambition, growth, and new beginnings.",
+        "reversed": "May indicate delays or lack of direction."
+      }
+    },
+    {
+      "name": "Swords",
+      "symbolism": {
+        "description": "Represents intellect, conflict, and decision-making.",
+        "elements": "Air, symbolizing thoughts and communication."
+      },
+      "meanings": {
+        "upright": "Indicates clarity, truth, and justice.",
+        "reversed": "Can suggest confusion or miscommunication."
+      }
+    },
+    {
+      "name": "Pentacles",
+      "symbolism": {
+        "description": "Symbolizes material aspects, work, and finances.",
+        "elements": "Earth, representing stability and practicality."
+      },
+      "meanings": {
+        "upright": "Embodies prosperity, security, and success.",
+        "reversed": "May indicate financial loss or instability."
+      }
+    }
+  ],
+  "keys": [
+    {
+      "name": "The Juggler or Magician",
+      "symbolism": {
+        "description": "The figure of a juggler stands before a table covered with the appliances of his art.",
+        "hand_positions": {
+          "left_hand": "Uprised holding a wand (or cup in some packs)",
+          "right_hand": "Pointing downwards"
+        },
+        "attire": "Wears a cap of maintenance like that of kings, forming an aureole around his head.",
+        "body_shape": "His body and arms form the shape of the Hebrew letter Aleph."
+      },
+      "meaning": {
+        "upright": "Symbolizes Will and manifestation.",
+        "reversed": "Can indicate manipulation or poor planning."
+      },
+      "hebrew_letter": "Aleph"
+    },
+    {
+      "name": "The High Priestess",
+      "symbolism": {
+        "description": "Represents intuition and the subconscious mind.",
+        "attributes": "Often depicted with a scroll or book, symbolizing knowledge."
+      },
+      "meaning": {
+        "upright": "Embodies mystery and hidden knowledge.",
+        "reversed": "May suggest secrets or lack of intuition."
+      },
+      "hebrew_letter": "Bet"
+    },
+    {
+      "name": "The Empress",
+      "symbolism": {
+        "description": "Symbolizes fertility, beauty, and nature.",
+        "attributes": "Often shown with a crown of stars and surrounded by nature."
+      },
+      "meaning": {
+        "upright": "Represents abundance and nurturing.",
+        "reversed": "Can indicate neglect or dependence."
+      },
+      "hebrew_letter": "Gimel"
+    },
+    {
+      "name": "The Emperor",
+      "symbolism": {
+        "description": "Represents authority and structure.",
+        "attributes": "Typically depicted on a throne, symbolizing power."
+      },
+      "meaning": {
+        "upright": "Embodies stability and control.",
+        "reversed": "May suggest tyranny or rigidity."
+      },
+      "hebrew_letter": "Dalet"
+    },
+    {
+      "name": "The Hierophant",
+      "symbolism": {
+        "description": "Symbolizes tradition and spiritual guidance.",
+        "attributes": "Often shown with keys, representing access to knowledge."
+      },
+      "meaning": {
+        "upright": "Embodies spiritual authority and conformity.",
+        "reversed": "Can indicate rebellion against tradition."
+      },
+      "hebrew_letter": "He"
+    },
+    {
+      "name": "The Lovers",
+      "symbolism": {
+        "description": "Represents love, harmony, and relationships.",
+        "attributes": "Often depicted as a couple, symbolizing union."
+      },
+      "meaning": {
+        "upright": "Embodies choices and duality in relationships.",
+        "reversed": "May suggest imbalance or miscommunication."
+      },
+      "hebrew_letter": "Vav"
+    },
+    {
+      "name": "The Chariot",
+      "symbolism": {
+        "description": "Symbolizes determination and willpower.",
+        "attributes": "Often shown with a charioteer, representing control over opposing forces."
+      },
+      "meaning": {
+        "upright": "Embodies victory through discipline and control.",
+        "reversed": "Can indicate lack of direction or aggression."
+      },
+      "hebrew_letter": "Zayin"
+    },
+    {
+      "name": "Strength",
+      "symbolism": {
+        "description": "Represents courage and inner strength.",
+        "attributes": "Often depicted with a lion, symbolizing bravery."
+      },
+      "meaning": {
+        "upright": "Embodies compassion and patience.",
+        "reversed": "May suggest weakness or self-doubt."
+      },
+      "hebrew_letter": "Chet"
+    },
+    {
+      "name": "The Hermit",
+      "symbolism": {
+        "description": "Symbolizes introspection and solitude.",
+        "attributes": "Often shown with a lantern, representing guidance."
+      },
+      "meaning": {
+        "upright": "Embodies wisdom through reflection.",
+        "reversed": "Can indicate isolation or withdrawal."
+      },
+      "hebrew_letter": "Tet"
+    },
+    {
+      "name": "Wheel of Fortune",
+      "symbolism": {
+        "description": "Represents cycles and fate.",
+        "attributes": "Often depicted with a wheel, symbolizing the ups and downs of life."
+      },
+      "meaning": {
+        "upright": "Embodies change and destiny.",
+        "reversed": "May suggest bad luck or resistance to change."
+      },
+      "hebrew_letter": "Yod"
+    },
+    {
+      "name": "Justice",
+      "symbolism": {
+        "description": "Symbolizes fairness and truth.",
+        "attributes": "Often shown with scales, representing balance."
+      },
+      "meaning": {
+        "upright": "Embodies accountability and law.",
+        "reversed": "Can indicate dishonesty or imbalance."
+      },
+      "hebrew_letter": "Kaf"
+    },
+    {
+      "name": "The Hanged Man",
+      "symbolism": {
+        "description": "Represents sacrifice and new perspectives.",
+        "attributes": "Often depicted hanging upside down, symbolizing surrender."
+      },
+      "meaning": {
+        "upright": "Embodies letting go and acceptance.",
+        "reversed": "May suggest delays or resistance to change."
+      },
+      "hebrew_letter": "Lamed"
+    }
+  ]
+}

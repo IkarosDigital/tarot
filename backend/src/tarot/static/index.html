@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Personality & Tarot Analysis</title>
+
+    <!-- External Dependencies -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-dark: #1a1a2e;
+            --primary-light: #e6e6fa;
+            --accent-gold: #ffd700;
+            --accent-purple: #9b4dca;
+            --mystic-blue: #4a4e82;
+            --ethereal-purple: #9b6b9e;
+            --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            --card-bg: rgba(26, 26, 46, 0.95);
+            --transition-speed: 0.3s;
+            --error-red: #ff4444;
+            --success-green: #00c851;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-dark), var(--mystic-blue));
+            color: var(--primary-light);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            text-shadow: var(--text-shadow);
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--ethereal-purple);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            text-shadow: var(--text-shadow);
+            line-height: 1.8;
+        }
+
+        /* Quiz Sections */
+        .section {
+            display: none;
+            animation: slideIn 0.7s ease-out;
+            transform-origin: center;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            margin-bottom: 2rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Question Styles */
+        .question {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+            text-shadow: var(--text-shadow);
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            background: rgba(74, 78, 130, 0.3);
+            padding: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            background: rgba(155, 77, 202, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .option.selected {
+            background: rgba(155, 77, 202, 0.5);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-gold));
+            transition: width var(--transition-speed) ease;
+            border-radius: 5px;
+        }
+
+        /* Results Section */
+        .results {
+            text-align: center;
+        }
+
+        .personality-type {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin: 2rem 0;
+            text-shadow: var(--text-shadow);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .tarot-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(74, 78, 130, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .tarot-card {
+            margin: 2rem 0;
+        }
+
+        .tarot-card h3 {
+            color: var(--ethereal-purple);
+        }
+
+        .meanings-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .meanings-list li {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            color: var(--primary-light);
+        }
+
+        .meanings-list li:before {
+            content: "✧";
+            color: var(--accent-gold);
+            margin-right: 10px;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--accent-purple), var(--mystic-blue));
+            color: var(--primary-light);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--mystic-blue), var(--accent-purple));
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.1rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .error {
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--error-red);
+            border: 1px solid var(--error-red);
+        }
+
+        .success {
+            background: rgba(0, 200, 81, 0.2);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--primary-light);
+            border-top: 4px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .option {
+                padding: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="container">
+        <!-- Introduction Section -->
+        <section id="intro" class="section active">
+            <h1>Discover Your Mystic Profile</h1>
+            <div class="question-container">
+                <p>Embark on a journey of self-discovery through the ancient wisdom of Tarot and modern personality
+                    analysis.</p>
+                <button id="startBtn" class="option">Begin Your Journey</button>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+            <div class="question-container">
+                <h2 id="questionText"></h2>
+                <div class="options" id="options"></div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="section">
+            <h1>Your Mystic Profile Revealed</h1>
+            <div class="result-grid">
+                <div class="result-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <!-- Tarot card image will be inserted here -->
+                        </div>
+                        <div class="card-back">
+                            <!-- Card meaning will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div id="mbtiResult"></div>
+                    <div id="elementalAffinity"></div>
+                    <div id="personalityDescription"></div>
+                </div>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+            <button class="restart-btn" onclick="restartQuiz()" style="display: none;">Take Quiz Again</button>
+        </section>
+    </div>
+
+    <script>
+        // Global variables
+        let currentQuestion = 0;
+        let answers = [];
+        let questions = [];
+        let mbtiTypes = {};
+        let tarotCards = {};
+        let minorArcana = {};
+        let personalityConstruct = {};
+
+        // Initialize particle.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffd700' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: { enable: true, speed: 4, minimumValue: 0.3, sync: false }
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    outModes: { default: 'bounce' },
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                }
+            },
+            interactivity: {
+                detectsOn: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Show loading overlay
+        const loadingOverlay = document.querySelector('.loading-overlay');
+
+        async function loadData() {
+            try {
+                loadingOverlay.style.display = 'flex';
+                const [questionsResponse, mbtiResponse, tarotResponse, minorArcanaResponse, constructResponse] =
+                    await Promise.all([
+                        fetch('/api/questions'),
+                        fetch('/api/mbti-types'),
+                        fetch('/api/tarot-cards'),
+                        fetch('/api/minor-arcana'),
+                        fetch('/api/keys')
+                    ]);
+
+                if (!questionsResponse.ok) {
+                    throw new Error('Failed to load questions');
+                }
+
+                questions = await questionsResponse.json();
+                console.log('Loaded questions:', questions); // Debug log
+
+                if (!questions || !Array.isArray(questions) || questions.length === 0) {
+                    throw new Error('Questions data is invalid');
+                }
+
+                mbtiTypes = await mbtiResponse.json();
+                tarotCards = await tarotResponse.json();
+                minorArcana = await minorArcanaResponse.json();
+                personalityConstruct = await constructResponse.json();
+
+                initializeQuiz();
+                loadingOverlay.style.display = 'none';
+            } catch (error) {
+                showError('Failed to load quiz data: ' + error.message);
+                loadingOverlay.style.display = 'none';
+                console.error('Error loading data:', error);
+            }
+        }
+
+        // Initialize quiz
+        function initializeQuiz() {
+            const startButton = document.getElementById('startBtn');
+            if (startButton) {
+                startButton.addEventListener('click', startQuiz);
+            }
+            updateProgress();
+        }
+
+        // Start quiz function
+        function startQuiz() {
+            if (!questions || questions.length === 0) {
+                showError('Questions not loaded properly. Please refresh the page.');
+                return;
+            }
+
+            document.getElementById('intro').classList.remove('active');
+            document.getElementById('quiz').classList.add('active');
+            currentQuestion = 0;
+            answers = [];
+            displayQuestion();
+        }
+
+        // Display question
+        function displayQuestion() {
+            if (!questions || questions.length === 0) {
+                showError('No questions available');
+                return;
+            }
+
+            if (currentQuestion >= questions.length) {
+                showResults();
+                return;
+            }
+
+            const question = questions[currentQuestion];
+            if (!question) {
+                showError('Invalid question data');
+                return;
+            }
+
+            const questionText = document.getElementById('questionText');
+            const optionsContainer = document.getElementById('options');
+            
+            if (questionText && optionsContainer) {
+                questionText.textContent = question.text;
+                optionsContainer.innerHTML = '';
+
+                question.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'option animate__animated animate__fadeIn';
+                    button.textContent = option.text;
+                    button.addEventListener('click', () => handleAnswer(index));
+                    optionsContainer.appendChild(button);
+                });
+
+                updateProgress();
+            }
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = document.querySelector('.progress-bar');
+            if (progress) {
+                const percentage = (currentQuestion / (questions?.length || 1)) * 100;
+                progress.style.width = `${percentage}%`;
+            }
+        }
+
+        async function handleAnswer(answerIndex) {
+            answers.push(answerIndex);
+            updateProgress();
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            } else {
+                try {
+                    const response = await fetch('/api/calculate-result', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ answers: answers })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Failed to calculate results');
+                    }
+
+                    const result = await response.json();
+                    showResults(result);
+                } catch (error) {
+                    showError('Failed to calculate results: ' + error.message);
+                    console.error('Error calculating results:', error);
+                }
+            }
+        }
+
+        function showResults(result) {
+            if (!result) {
+                showError('Invalid result data');
+                return;
+            }
+
+            document.getElementById('quiz').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+
+            // Display MBTI result
+            const mbtiResult = document.getElementById('mbtiResult');
+            mbtiResult.innerHTML = `
+                <h2 class="animate__animated animate__fadeInDown">${result.mbti_type}</h2>
+                <p class="animate__animated animate__fadeIn">${result.personality?.description || 'No description available'}</p>
+            `;
+
+            // Display tarot card
+            const cardFront = document.querySelector('.card-front');
+            const cardBack = document.querySelector('.card-back');
+
+            if (cardFront && cardBack && result.tarot_card) {
+                cardFront.style.backgroundImage = `url(${result.tarot_card.image || 'default-card.jpg'})`;
+                cardBack.innerHTML = `
+                    <h3>${result.tarot_card.name || 'Unknown Card'}</h3>
+                    <p>${result.tarot_card.meaning || 'No meaning available'}</p>
+                `;
+
+                // Add card flip functionality
+                const cardInner = document.querySelector('.card-inner');
+                if (cardInner) {
+                    cardInner.addEventListener('click', () => {
+                        cardInner.style.transform = cardInner.style.transform === 'rotateY(180deg)' 
+                            ? 'rotateY(0deg)' 
+                            : 'rotateY(180deg)';
+                    });
+                }
+            }
+
+            // Display personality details
+            const personalityDescription = document.getElementById('personalityDescription');
+            if (personalityDescription && result.personality_construct) {
+                const construct = result.personality_construct;
+                personalityDescription.innerHTML = `
+                    <h3>Your Personality Profile</h3>
+                    ${construct.strengths ? `
+                        <div class="strengths">
+                            <h4>Strengths</h4>
+                            <ul>
+                                ${construct.strengths.map(s => `<li>${s}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    ${construct.challenges ? `
+                        <div class="challenges">
+                            <h4>Challenges</h4>
+                            <ul>
+                                ${construct.challenges.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                `;
+            }
+
+            // Show restart button
+            document.querySelector('.restart-btn').style.display = 'block';
+        }
+
+        // Save results
+        function saveResults(result) {
+            const results = {
+                mbtiType: result.mbti_type,
+                tarotCard: result.tarot_card,
+                personalityDescription: result.personality?.description || 'No description available',
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('mysticProfile', JSON.stringify(results));
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Show success message
+        function showSuccess(message) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            // Reset all quiz state
+            currentQuestion = 0;
+            answers = [];
+            updateProgress();
+
+            // Hide results and show first question
+            document.querySelector('.results-container').style.display = 'none';
+            document.querySelector('.restart-btn').style.display = 'none';
+
+            // Show first question
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            sections[0].classList.add('active');
+
+            // Reset progress bar
+            document.querySelector('.progress-bar').style.width = '0%';
+
+            showSuccess('Quiz restarted! Good luck!');
+        }
+
+        // Make options keyboard accessible
+        document.querySelectorAll('.option').forEach(option => {
+            option.setAttribute('role', 'button');
+            option.setAttribute('tabindex', '0');
+            option.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    option.click();
+                }
+            });
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
+    </script>
+</body>
+
+</html>

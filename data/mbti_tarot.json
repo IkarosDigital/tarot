@@ -1,0 +1,196 @@
+{
+    "mbti_tarot_correlation": {
+      "description": "The 16 Myers-Briggs Type Indicator (MBTI) personality types are connected to the Tarot Court cards, providing a modern psychological approach to interpreting these cards. This method moves beyond traditional interpretations based on physical appearance or astrological signs.",
+      "mbti_basis": {
+          "cognitive_functions": "The MBTI system is based on four cognitive functions: thinking, feeling, sensation, and intuition. Each of these is associated with one of the four Tarot suits.",
+          "suits_association": {
+            "thinking": "Swords",
+            "feeling": "Cups",
+            "intuition": "Wands",
+            "sensation": "Pentacles"
+           },
+         "court_card_levels": "The MBTI also aligns with the court card levels. Kings and Knights are considered more extroverted, while Queens and Pages are seen as more introverted. Kings and Queens are often associated with 'judgments,' while Knights and Pages are associated with 'being aware'."
+      },
+      "court_card_correlations": [
+        {
+          "mbti": "INTJ",
+          "card": "King of Swords",
+          "description": "The King of Swords represents intellectual power and authority",
+          "meaning": {
+            "upright": "Clear thinking, intellectual power, authority, truth",
+            "reversed": "Manipulative, cruel, blocking emotions"
+          },
+          "minor_arcana": ["Two of Swords", "Eight of Swords"]
+        },
+        {
+          "mbti": "INTP",
+          "card": "Page of Swords",
+          "description": "The Page of Swords represents new ideas and mental energy",
+          "meaning": {
+            "upright": "New ideas, curiosity, restless mind",
+            "reversed": "Scattered thoughts, delays, frustration"
+          },
+          "minor_arcana": ["Three of Swords", "Seven of Swords"]
+        },
+        {
+          "mbti": "ENTJ",
+          "card": "King of Wands",
+          "description": "The King of Wands represents inspired leadership and vision",
+          "meaning": {
+            "upright": "Leadership, vision, entrepreneur, honor",
+            "reversed": "Impulsive, domineering, tyrannical"
+          },
+          "minor_arcana": ["Two of Wands", "Six of Wands"]
+        },
+        {
+          "mbti": "ENTP",
+          "card": "Knight of Wands",
+          "description": "The Knight of Wands represents adventure and pursuit of goals",
+          "meaning": {
+            "upright": "Energy, passion, inspired action",
+            "reversed": "Scattered energy, delays, frustration"
+          },
+          "minor_arcana": ["Three of Wands", "Five of Wands"]
+        },
+        {
+          "mbti": "INFJ",
+          "card": "Queen of Cups",
+          "description": "The Queen of Cups represents emotional wisdom and intuition",
+          "meaning": {
+            "upright": "Intuitive, empathetic, nurturing",
+            "reversed": "Emotional instability, moodiness"
+          },
+          "minor_arcana": ["Two of Cups", "Nine of Cups"]
+        },
+        {
+          "mbti": "INFP",
+          "card": "Page of Cups",
+          "description": "The Page of Cups represents creative inspiration and sensitivity",
+          "meaning": {
+            "upright": "Creative beginnings, intuitive messages",
+            "reversed": "Emotional immaturity, blocked creativity"
+          },
+          "minor_arcana": ["Three of Cups", "Seven of Cups"]
+        },
+        {
+          "mbti": "ENFJ",
+          "card": "King of Cups",
+          "description": "The King of Cups represents emotional balance and diplomacy",
+          "meaning": {
+            "upright": "Diplomatic, balance of head and heart",
+            "reversed": "Manipulation, emotional volatility"
+          },
+          "minor_arcana": ["Four of Cups", "Ten of Cups"]
+        },
+        {
+          "mbti": "ENFP",
+          "card": "Knight of Cups",
+          "description": "The Knight of Cups represents romantic pursuit and creativity",
+          "meaning": {
+            "upright": "Following dreams, romantic, artistic",
+            "reversed": "Unrealistic, escapist, moodiness"
+          },
+          "minor_arcana": ["Five of Cups", "Eight of Cups"]
+        },
+        {
+          "mbti": "ISTJ",
+          "card": "King of Pentacles",
+          "description": "The King of Pentacles represents material success and reliability",
+          "meaning": {
+            "upright": "Abundance, security, discipline",
+            "reversed": "Materialism, inflexibility"
+          },
+          "minor_arcana": ["Four of Pentacles", "Ten of Pentacles"]
+        },
+        {
+          "mbti": "ISFJ",
+          "card": "Queen of Pentacles",
+          "description": "The Queen of Pentacles represents nurturing and practicality",
+          "meaning": {
+            "upright": "Nurturing, practical, abundance",
+            "reversed": "Materialism, codependency"
+          },
+          "minor_arcana": ["Two of Pentacles", "Nine of Pentacles"]
+        },
+        {
+          "mbti": "ESTJ",
+          "card": "Knight of Pentacles",
+          "description": "The Knight of Pentacles represents methodical progress",
+          "meaning": {
+            "upright": "Reliable, routine, conservative",
+            "reversed": "Workaholic, stubbornness"
+          },
+          "minor_arcana": ["Three of Pentacles", "Eight of Pentacles"]
+        },
+        {
+          "mbti": "ESFJ",
+          "card": "Page of Pentacles",
+          "description": "The Page of Pentacles represents new material opportunities",
+          "meaning": {
+            "upright": "Manifestation, study, new opportunity",
+            "reversed": "Lack of progress, procrastination"
+          },
+          "minor_arcana": ["Five of Pentacles", "Seven of Pentacles"]
+        },
+        {
+          "mbti": "ISTP",
+          "card": "Knight of Swords",
+          "description": "The Knight of Swords represents swift action and thought",
+          "meaning": {
+            "upright": "Swift action, intellectual pursuit",
+            "reversed": "Impulsive, aggressive"
+          },
+          "minor_arcana": ["Five of Swords", "Six of Swords"]
+        },
+        {
+          "mbti": "ISFP",
+          "card": "Page of Wands",
+          "description": "The Page of Wands represents exploration and discovery",
+          "meaning": {
+            "upright": "New beginnings, exploration, potential",
+            "reversed": "Lack of direction, procrastination"
+          },
+          "minor_arcana": ["Four of Wands", "Seven of Wands"]
+        },
+        {
+          "mbti": "ESTP",
+          "card": "Queen of Wands",
+          "description": "The Queen of Wands represents confidence and determination",
+          "meaning": {
+            "upright": "Confidence, determination, social butterfly",
+            "reversed": "Jealousy, demanding, vengeful"
+          },
+          "minor_arcana": ["Eight of Wands", "Nine of Wands"]
+        },
+        {
+          "mbti": "ESFP",
+          "card": "Queen of Swords",
+          "description": "The Queen of Swords represents clear communication and independence",
+          "meaning": {
+            "upright": "Independent, clear communication",
+            "reversed": "Cold, bitter, harsh truth"
+          },
+          "minor_arcana": ["Four of Swords", "Nine of Swords"]
+        }
+      ],
+      "matching_personalities": {
+           "king_of_wands": {
+              "card": "King of Wands (ENTJ)",
+              "matches": ["INFP (Page of Cups)", "INTP (Page of Wands)"]
+          },
+           "queen_of_wands": {
+              "card": "Queen of Wands (INTJ)",
+               "matches": ["ENFP (Knight of Cups)", "ENTP (Knight of Wands)"]
+           },
+           "knight_of_wands": {
+             "card": "Knight of Wands (ENTP)",
+             "matches": ["INFJ (Queen of Cups)", "INTJ (Queen of Wands)"]
+           },
+           "page_of_wands": {
+             "card": "Page of Wands (INTP)",
+             "matches":["ENFJ (King of Cups)", "ENTJ (King of Wands)"]
+            }
+      },
+       "summary": "**This system provides a way to understand the court cards as representing different personality types with strengths and weaknesses based on modern psychology.**"
+    }
+  }

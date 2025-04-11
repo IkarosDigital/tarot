@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 MBTI & Tarot Personality Assessment</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8e44ad;
+            --accent-color: #f1c40f;
+            --text-color: #2c3e50;
+            --background-color: #f5f6fa;
+            --card-background: #ffffff;
+            --shadow-color: rgba(44, 62, 80, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Sections */
+        section {
+            background: var(--card-background);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            margin-bottom: 2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.8rem;
+            background: #e0e0e0;
+            border-radius: 0.4rem;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Questions */
+        .question-container {
+            margin-bottom: 2rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--card-background);
+        }
+
+        .option:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .option.selected {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        /* Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: var(--text-color);
+        }
+
+        .btn-primary:hover {
+            background: #9b59b6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .type-display {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-family: 'Cinzel', serif;
+        }
+
+        .card-display {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .description {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .strength-indicators {
+            margin-top: 2rem;
+        }
+
+        .dimension-bar {
+            background: #e0e0e0;
+            height: 2rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dimension-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transition: width 1s ease;
+        }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loader {
+            text-align: center;
+        }
+
+        .tarot-card {
+            width: 100px;
+            height: 160px;
+            background: var(--secondary-color);
+            border-radius: 10px;
+            margin: 0 auto 1rem;
+            animation: cardFlip 2s infinite;
+        }
+
+        @keyframes cardFlip {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateY(180deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <p>Reading the cards... 🔮</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Introduction Section -->
+        <section id="intro-section" class="active">
+            <h1>🔮 Discover Your MBTI & Tarot Personality</h1>
+            <p class="description">Embark on a journey of self-discovery through the wisdom of MBTI and the mystical
+                insights of Tarot.</p>
+            <button id="startBtn" class="btn-primary">Begin Journey ✨</button>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="hidden">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <span class="progress-text">Question <span id="currentQuestion">1</span> of <span
+                        id="totalQuestions">16</span></span>
+            </div>
+
+            <div id="question-container">
+                <h2 id="question"></h2>
+                <div id="options" class="options"></div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button id="prevBtn" class="btn-secondary" disabled>← Previous</button>
+                <button id="nextBtn" class="btn-primary" disabled>Next →</button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="hidden">
+            <div class="results-container">
+                <div class="mbti-result">
+                    <h2>✨ Your MBTI Type</h2>
+                    <div id="mbti-type" class="type-display"></div>
+                    <div id="mbti-description" class="description"></div>
+                </div>
+
+                <div class="tarot-result">
+                    <h2>🎴 Your Tarot Correspondences</h2>
+                    <div id="court-card" class="card-display"></div>
+                    <div id="card-meaning" class="description"></div>
+                </div>
+
+                <div class="element-result">
+                    <h2>🌟 Your Element & Suit</h2>
+                    <div id="element-description" class="description"></div>
+                </div>
+
+                <div class="strength-indicators">
+                    <h3>Personality Dimensions</h3>
+                    <div id="dimension-bars"></div>
+                </div>
+            </div>
+
+            <button id="restartBtn" class="btn-primary">Take Test Again 🔄</button>
+        </section>
+    </div>
+
+    <script>
+        // Global State Variables
+        let personalityConstruct;
+        let mbtiPersonalities;
+        let mbtiTarot;
+        let tarotSuits;
+        let tarotKeys;
+        let questions;
+        let currentQuestionIndex = 0;
+        let answers;
+        let scores = {
+            E: 0, I: 0,
+            S: 0, N: 0,
+            T: 0, F: 0,
+            J: 0, P: 0
+        };
+    
+        // DOM Elements
+        const startBtn = document.getElementById('startBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const introSection = document.getElementById('intro-section');
+        const quizSection = document.getElementById('quiz-section');
+        const resultsSection = document.getElementById('results-section');
+        const questionContainer = document.getElementById('question-container');
+    
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadJSONData();
+            if (questions) {
+                answers = new Array(questions.length).fill(-1);
+                initializeQuiz();
+            } else {
+                console.error('Questions failed to load');
+            }
+        });
+    
+        // Data Loading
+        async function loadJSONData() {
+            try {
+                const [constructResponse, personalitiesResponse, tarotResponse, suitesResponse, keysResponse, questionsResponse] = await Promise.all([
+                    fetch('personality_construct.json'),
+                    fetch('mbti_personalities.json'),
+                    fetch('mbti_tarot.json'),
+                    fetch('suites.json'),
+                    fetch('tarot_keys.json'),
+                    fetch('questions.json')
+                ]);
+    
+                personalityConstruct = await constructResponse.json();
+                mbtiPersonalities = await personalitiesResponse.json();
+                mbtiTarot = await tarotResponse.json();
+                tarotSuits = await suitesResponse.json();
+                tarotKeys = await keysResponse.json();
+                questions = (await questionsResponse.json()).questions;
+    
+                return true;
+            } catch (error) {
+                console.error('Error loading JSON data:', error);
+                return false;
+            }
+        }
+    
+        // Quiz Functions
+        function initializeQuiz() {
+            currentQuestionIndex = 0;
+            scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    
+            introSection.classList.add('active');
+            quizSection.classList.add('hidden');
+            resultsSection.classList.add('hidden');
+    
+            if (questions) {
+                displayQuestion(currentQuestionIndex);
+            }
+    
+            updateNavigationButtons();
+        }
+    
+        function displayQuestion(index) {
+            if (!questions || !questions[index]) return;
+    
+            currentQuestionIndex = index;
+            const question = questions[currentQuestionIndex];
+    
+            document.getElementById('question').textContent = question.text;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+    
+            question.options.forEach((option, idx) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option.text;
+                button.onclick = () => selectOption(idx);
+                optionsContainer.appendChild(button);
+            });
+    
+            updateNavigationButtons();
+            updateProgressBar();
+        }
+    
+        function selectOption(optionIndex) {
+            answers[currentQuestionIndex] = optionIndex;
+            displayQuestion(currentQuestionIndex);
+            nextBtn.disabled = false;
+        }
+    
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = answers[currentQuestionIndex] === -1;
+            nextBtn.textContent = currentQuestionIndex === questions.length - 1 ? 'See Results ✨' : 'Next →';
+        }
+    
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.querySelector('.progress').style.width = `${progress}%`;
+        }
+    
+        // Event Listeners
+        startBtn.addEventListener('click', () => {
+            introSection.classList.remove('active');
+            introSection.classList.add('hidden');
+            quizSection.classList.remove('hidden');
+            quizSection.classList.add('active');
+            displayQuestion(0);
+        });
+    
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                displayQuestion(currentQuestionIndex - 1);
+            }
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                displayQuestion(currentQuestionIndex + 1);
+            } else {
+                calculateResults();
+            }
+        });
+    
+        restartBtn.addEventListener('click', initializeQuiz);
+    
+        // Results Calculation
+        function calculateResults() {
+            loadingOverlay.classList.remove('hidden');
+    
+            Object.keys(scores).forEach(key => scores[key] = 0);
+    
+            answers.forEach((answer, index) => {
+                const question = questions[index];
+                const selectedOption = question.options[answer];
+                Object.entries(selectedOption.score).forEach(([trait, score]) => {
+                    scores[trait] += score;
+                });
+            });
+    
+            const type = [
+                scores.E > scores.I ? 'E' : 'I',
+                scores.S > scores.N ? 'S' : 'N',
+                scores.T > scores.F ? 'T' : 'F',
+                scores.J > scores.P ? 'J' : 'P'
+            ].join('');
+    
+            setTimeout(() => displayResults(type), 2000);
+        }
+    
+        function displayResults(type) {
+            loadingOverlay.classList.add('hidden');
+            quizSection.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+    
+            document.getElementById('mbti-type').textContent = type;
+            document.getElementById('mbti-description').textContent = mbtiPersonalities[type].description;
+    
+            const tarotInfo = mbtiTarot[type];
+            document.getElementById('court-card').textContent = tarotInfo.card;
+            document.getElementById('card-meaning').innerHTML = `
+                <p><strong>Upright:</strong> ${tarotInfo.upright}</p>
+                <p><strong>Reversed:</strong> ${tarotInfo.reversed}</p>
+            `;
+    
+            const suitInfo = tarotSuits[tarotInfo.suit];
+            document.getElementById('element-description').innerHTML = `
+                <p><strong>Element:</strong> ${suitInfo.element}</p>
+                <p><strong>Qualities:</strong> ${suitInfo.qualities}</p>
+            `;
+    
+            const dimensions = [
+                { label: 'Extraversion - Introversion', value: (scores.E / (scores.E + scores.I)) * 100 },
+                { label: 'Sensing - Intuition', value: (scores.S / (scores.S + scores.N)) * 100 },
+                { label: 'Thinking - Feeling', value: (scores.T / (scores.T + scores.F)) * 100 },
+                { label: 'Judging - Perceiving', value: (scores.J / (scores.J + scores.P)) * 100 }
+            ];
+    
+            document.getElementById('dimension-bars').innerHTML = dimensions.map(dim => `
+                <div class="dimension">
+                    <p>${dim.label}</p>
+                    <div class="dimension-bar">
+                        <div class="dimension-fill" style="width: ${dim.value}%"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+
+</html>

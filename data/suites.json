@@ -1,0 +1,48 @@
+{
+    "suits": [
+      {
+        "name": "Cups",
+        "symbolism": {
+          "description": "**Represents emotions, relationships, and connections** [1].",
+          "elements": "**Water, symbolizing intuition and feelings** [1]."
+        },
+        "meanings": {
+          "upright": "**Indicates love, joy, and emotional fulfillment** [1].",
+          "reversed": "**Can suggest emotional instability or disconnection** [1]."
+        }
+      },
+      {
+        "name": "Wands",
+        "symbolism": {
+          "description": "**Symbolizes action, inspiration, and creativity** [1].",
+           "elements": "**Fire, representing passion and energy** [1]."
+        },
+        "meanings": {
+          "upright": "**Embodies ambition, growth, and new beginnings** [2].",
+          "reversed": "**May indicate delays or lack of direction** [2]."
+        }
+      },
+      {
+        "name": "Swords",
+        "symbolism": {
+           "description": "**Represents intellect, conflict, and decision-making** [2].",
+          "elements": "**Air, symbolizing thoughts and communication** [2]."
+         },
+        "meanings": {
+          "upright": "**Indicates clarity, truth, and justice** [2].",
+          "reversed": "**Can suggest confusion or miscommunication** [2]."
+        }
+      },
+      {
+        "name": "Pentacles",
+        "symbolism": {
+          "description": "**Symbolizes material aspects, work, and finances** [3].",
+           "elements":"**Earth, representing stability and practicality** [3]."
+        },
+        "meanings": {
+          "upright": "**Embodies prosperity, security, and success** [3].",
+          "reversed": "**May indicate financial loss or instability** [3]."
+        }
+      }
+    ]
+  }

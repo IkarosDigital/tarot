@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Test - Mystic Tarot NFT</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script type="module" src="../main.ts"></script>
+    <script src="../components/header.js"></script>
+    <script src="../components/loading-spinner.ts"></script>
+</head>
+<body>
+    <div class="app-container">
+        <app-header></app-header>
+
+        <main class="quiz-container">
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+            <div id="questionContainer" class="question-container">
+                <!-- Questions will be inserted here -->
+                <loading-spinner 
+                    id="quiz-loader"
+                    size="40px"
+                    message="Loading questions..."
+                    style="display: none;">
+                </loading-spinner>
+            </div>
+
+            <div class="navigation-buttons">
+                <button id="prevBtn" class="btn-secondary" onclick="previousQuestion()" disabled>← Previous</button>
+                <button id="nextBtn" class="btn-primary" onclick="nextQuestion()">Next →</button>
+            </div>
+        </main>
+
+        <footer>
+            <p> 2024 Mystic Tarot NFT. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script type="module">
+        import { errorHandler, ErrorType } from '../utils/error-handler';
+        import { toast } from '../components/toast';
+        import { loadingManager, LoadingState } from '../utils/loading-state';
+
+        let currentQuestion = 0;
+        let questions = [];
+        let answers = new Array(questions.length).fill(null);
+        const quizLoader = document.getElementById('quiz-loader');
+
+        async function loadQuestions() {
+            try {
+                loadingManager.startLoading({
+                    id: 'quiz-loader',
+                    message: 'Loading questions...'
+                });
+                quizLoader.style.display = 'flex';
+
+                const response = await fetch('/api/questions');
+                if (!response.ok) {
+                    throw new Error('Failed to load questions');
+                }
+                
+                questions = await response.json();
+                answers = new Array(questions.length).fill(null);
+                
+                loadingManager.finishLoading('quiz-loader', true);
+                quizLoader.style.display = 'none';
+                
+                initializeQuiz();
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message, {
+                    action: errorDetails.retry ? {
+                        text: 'Retry',
+                        onClick: () => loadQuestions()
+                    } : undefined
+                });
+                loadingManager.finishLoading('quiz-loader', false);
+                quizLoader.style.display = 'none';
+            }
+        }
+
+        function initializeQuiz() {
+            displayQuestion(currentQuestion);
+            updateProgress();
+        }
+
+        function displayQuestion(index) {
+            const container = document.getElementById('questionContainer');
+            const question = questions[index];
+            
+            container.innerHTML = `
+                <h2 class="question-text">${question.text}</h2>
+                <div class="options-container">
+                    ${question.options.map((option, i) => `
+                        <div class="option ${answers[index] === i ? 'selected' : ''}" 
+                             onclick="selectOption(${i})">
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            updateNavButtons();
+        }
+
+        function selectOption(optionIndex) {
+            answers[currentQuestion] = optionIndex;
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                option.classList.toggle('selected', i === optionIndex);
+            });
+            updateNavButtons();
+        }
+
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentQuestion === 0;
+            
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.textContent = 'Get Your Reading';
+                nextBtn.onclick = submitQuiz;
+            } else {
+                nextBtn.textContent = 'Next →';
+                nextBtn.onclick = nextQuestion;
+            }
+            
+            nextBtn.disabled = answers[currentQuestion] === null;
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion(currentQuestion);
+                updateProgress();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion(currentQuestion);
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        async function submitQuiz() {
+            try {
+                loadingManager.startLoading({
+                    id: 'submit-quiz',
+                    message: 'Analyzing your answers...'
+                });
+
+                // Get wallet state if connected
+                let walletAddress = null;
+                try {
+                    const state = await window.modal.getState();
+                    if (state.isConnected) {
+                        walletAddress = state.address;
+                    }
+                } catch (error) {
+                    console.warn('No wallet connected:', error);
+                }
+
+                const quizData = {
+                    answers: answers.map((answerIndex, questionIndex) => ({
+                        question: questions[questionIndex].text,
+                        answer: questions[questionIndex].options[answerIndex]
+                    })),
+                    walletAddress
+                };
+
+                loadingManager.updateProgress('submit-quiz', 30, 'Generating your cards...');
+                
+                const response = await fetch('/api/calculate-result', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(quizData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to calculate result');
+                }
+
+                loadingManager.updateProgress('submit-quiz', 70, 'Preparing your reading...');
+                const result = await response.json();
+                
+                // Redirect to results page with data
+                const resultParam = encodeURIComponent(JSON.stringify(result));
+                loadingManager.finishLoading('submit-quiz', true);
+                window.location.href = `/results.html?result=${resultParam}`;
+            } catch (error) {
+                const errorDetails = errorHandler.handleError(error);
+                toast.error(errorDetails.message, {
+                    action: errorDetails.retry ? {
+                        text: 'Retry',
+                        onClick: () => submitQuiz()
+                    } : undefined
+                });
+                loadingManager.finishLoading('submit-quiz', false);
+            }
+        }
+
+        // Initialize the quiz
+        loadQuestions();
+
+        // Add loading state listener
+        loadingManager.addListener('submit-quiz', (state, message, progress) => {
+            const container = document.getElementById('questionContainer');
+            if (state === LoadingState.LOADING) {
+                container.innerHTML = `
+                    <loading-spinner 
+                        size="60px"
+                        message="${message || 'Processing...'}"
+                        progress="${progress || 0}">
+                    </loading-spinner>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

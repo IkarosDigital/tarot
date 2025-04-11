@@ -1,0 +1,704 @@
+{
+    "INTJ": {
+        "name": "The Architect",
+        "strengths": [
+            "Strategic thinking",
+            "Independent",
+            "Analytical",
+            "Problem-solving",
+            "High ethical standards"
+        ],
+        "challenges": [
+            "Can be overly critical",
+            "May seem aloof",
+            "Perfectionist tendencies",
+            "Might struggle with emotional expression"
+        ],
+        "description": "INTJs are analytical problem-solvers, driven by their own original ideas to achieve improvements. They have a talent for seeing possibilities for change, organizing a systematic approach to implement it, and pushing it through to completion.",
+        "key_traits": [
+            "Analytical",
+            "Independent",
+            "Perfectionist"
+        ],
+        "tarot_associations": {
+            "court_card": "Queen of Wands",
+            "meanings": [
+                "Vision and foresight",
+                "Strategic thinking",
+                "Independent nature"
+            ],
+            "upright_meanings": [
+                "Confident and self-assured",
+                "Natural-born leader",
+                "Determined and focused",
+                "Strategic vision"
+            ],
+            "reversed_meanings": [
+                "Self-doubt",
+                "Aggressive or domineering",
+                "Perfectionism taken too far",
+                "Losing sight of the bigger picture"
+            ]
+        }
+    },
+    "INTP": {
+        "name": "The Logician",
+        "strengths": [
+            "Analytical",
+            "Original thinking",
+            "Open-minded",
+            "Curious",
+            "Objective",
+            "Problem-solving",
+            "Theoretical understanding"
+        ],
+        "challenges": [
+            "Can be overly perfectionist",
+            "May neglect social niceties",
+            "Can seem insensitive",
+            "Difficulty with practical matters"
+        ],
+        "description": "INTPs are innovative inventors with an unquenchable thirst for knowledge. They live in a world of theoretical possibilities and see potential for improvement everywhere.",
+        "key_traits": [
+            "Logical",
+            "Theoretical",
+            "Innovative"
+        ],
+        "tarot_associations": {
+            "court_card": "King of Swords",
+            "meanings": [
+                "Intellectual power",
+                "Truth-seeking",
+                "Clear thinking"
+            ],
+            "upright_meanings": [
+                "Intellectual clarity",
+                "Authority through knowledge",
+                "Power of reason",
+                "Mental discipline"
+            ],
+            "reversed_meanings": [
+                "Intellectual arrogance",
+                "Abuse of knowledge",
+                "Cold rationality",
+                "Mental gridlock"
+            ]
+        }
+    },
+    "ENTJ": {
+        "name": "The Commander",
+        "strengths": [
+            "Natural leader",
+            "Strategic thinking",
+            "Confident",
+            "Efficient",
+            "Charismatic",
+            "Decision-making",
+            "Organization"
+        ],
+        "challenges": [
+            "Can be overly dominant",
+            "Impatient with inefficiency",
+            "May seem intimidating",
+            "Can be insensitive"
+        ],
+        "description": "ENTJs are natural-born leaders who see life as a challenge to be conquered. They combine their drive for achievement with strategic thinking to bring their visions to life.",
+        "key_traits": [
+            "Commanding",
+            "Decisive",
+            "Strategic"
+        ],
+        "tarot_associations": {
+            "court_card": "King of Wands",
+            "meanings": [
+                "Leadership",
+                "Vision",
+                "Ambition"
+            ],
+            "upright_meanings": [
+                "Natural leadership",
+                "Charismatic influence",
+                "Creative vision",
+                "Bold action"
+            ],
+            "reversed_meanings": [
+                "Tyrannical behavior",
+                "Impulsiveness",
+                "Domineering attitude",
+                "Reckless ambition"
+            ]
+        }
+    },
+    "ENTP": {
+        "name": "The Debater",
+        "strengths": [
+            "Innovative",
+            "Quick thinking",
+            "Charismatic",
+            "Energetic",
+            "Knowledgeable",
+            "Creative problem-solving",
+            "Adaptability"
+        ],
+        "challenges": [
+            "Can be argumentative",
+            "May neglect routine tasks",
+            "Can be insensitive",
+            "Difficulty with follow-through"
+        ],
+        "description": "ENTPs are clever and curious thinkers who cannot resist an intellectual challenge. They are often skilled at finding novel solutions to difficult problems, excelling at seeing patterns others don't notice.",
+        "key_traits": [
+            "Innovative",
+            "Debating",
+            "Quick-witted"
+        ],
+        "tarot_associations": {
+            "court_card": "Knight of Swords",
+            "meanings": [
+                "Quick thinking",
+                "Communication",
+                "Mental agility"
+            ],
+            "upright_meanings": [
+                "Swift action",
+                "Mental acuity",
+                "Decisive communication",
+                "Intellectual pursuit"
+            ],
+            "reversed_meanings": [
+                "Impulsive decisions",
+                "Harsh words",
+                "Scattered energy",
+                "Mental burnout"
+            ]
+        }
+    },
+    "INFJ": {
+        "name": "The Advocate",
+        "strengths": [
+            "Insightful",
+            "Principled",
+            "Creative",
+            "Passionate",
+            "Altruistic",
+            "Complex thinking",
+            "Deep understanding"
+        ],
+        "challenges": [
+            "Can be overly idealistic",
+            "May burn out easily",
+            "Perfectionist tendencies",
+            "Difficulty with criticism"
+        ],
+        "description": "INFJs are creative nurturers with a strong sense of personal integrity and a drive to help others realize their potential. They have unique insights into people and situations.",
+        "key_traits": [
+            "Insightful",
+            "Idealistic",
+            "Complex"
+        ],
+        "tarot_associations": {
+            "court_card": "Queen of Cups",
+            "meanings": [
+                "Intuition",
+                "Emotional depth",
+                "Wisdom"
+            ],
+            "upright_meanings": [
+                "Deep intuition",
+                "Emotional intelligence",
+                "Compassionate wisdom",
+                "Inner knowing"
+            ],
+            "reversed_meanings": [
+                "Emotional overwhelm",
+                "Psychic burnout",
+                "Codependency",
+                "Loss of inner compass"
+            ]
+        }
+    },
+    "INFP": {
+        "name": "The Mediator",
+        "strengths": [
+            "Empathetic",
+            "Creative",
+            "Passionate",
+            "Principled",
+            "Open-minded",
+            "Deep feeling",
+            "Idealistic vision"
+        ],
+        "challenges": [
+            "May take things personally",
+            "Can be too idealistic",
+            "Difficulty with criticism",
+            "Impractical tendencies"
+        ],
+        "description": "INFPs are imaginative idealists, guided by their own core values and beliefs. They are sensitive, caring, and compassionate, and deeply concerned with personal growth.",
+        "key_traits": [
+            "Idealistic",
+            "Empathetic",
+            "Creative"
+        ],
+        "tarot_associations": {
+            "court_card": "Page of Cups",
+            "meanings": [
+                "Emotional sensitivity",
+                "Creativity",
+                "Inner child"
+            ],
+            "upright_meanings": [
+                "Creative inspiration",
+                "Emotional awakening",
+                "New love",
+                "Artistic potential"
+            ],
+            "reversed_meanings": [
+                "Emotional immaturity",
+                "Creative blocks",
+                "Oversensitivity",
+                "Naive idealism"
+            ]
+        }
+    },
+    "ENFJ": {
+        "name": "The Protagonist",
+        "strengths": [
+            "Charismatic",
+            "Empathetic",
+            "Natural leader",
+            "Reliable",
+            "Inspiring",
+            "Motivating others",
+            "Building connections"
+        ],
+        "challenges": [
+            "Can be overly idealistic",
+            "May neglect own needs",
+            "Sensitive to criticism",
+            "Can be controlling"
+        ],
+        "description": "ENFJs are charismatic and inspiring leaders, able to mesmerize their listeners. They are often found motivating others to achieve their goals and realize their dreams.",
+        "key_traits": [
+            "Charismatic",
+            "Empathetic",
+            "Inspiring"
+        ],
+        "tarot_associations": {
+            "court_card": "King of Cups",
+            "meanings": [
+                "Emotional leadership",
+                "Compassion",
+                "Wisdom"
+            ],
+            "upright_meanings": [
+                "Emotional mastery",
+                "Diplomatic leadership",
+                "Compassionate guidance",
+                "Balanced judgment"
+            ],
+            "reversed_meanings": [
+                "Emotional manipulation",
+                "Moodiness",
+                "Loss of emotional control",
+                "Poor leadership"
+            ]
+        }
+    },
+    "ENFP": {
+        "name": "The Campaigner",
+        "strengths": [
+            "Enthusiastic",
+            "Creative",
+            "Sociable",
+            "Energetic",
+            "Empathetic",
+            "Innovation",
+            "Inspiring others"
+        ],
+        "challenges": [
+            "May struggle with follow-through",
+            "Easily distracted",
+            "Difficulty with routine",
+            "Emotional dependence"
+        ],
+        "description": "ENFPs are enthusiastic, creative, and sociable free spirits who can always find a reason to smile. They are charming, independent, energetic, and compassionate.",
+        "key_traits": [
+            "Enthusiastic",
+            "Creative",
+            "People-oriented"
+        ],
+        "tarot_associations": {
+            "court_card": "Knight of Cups",
+            "meanings": [
+                "Creativity",
+                "Romance",
+                "Adventure"
+            ],
+            "upright_meanings": [
+                "Romantic pursuit",
+                "Creative flow",
+                "Following dreams",
+                "Emotional journey"
+            ],
+            "reversed_meanings": [
+                "Unrealistic fantasies",
+                "Emotional instability",
+                "Getting lost in dreams",
+                "Avoiding responsibility"
+            ]
+        }
+    },
+    "ISTJ": {
+        "name": "The Logistician",
+        "strengths": [
+            "Organized",
+            "Reliable",
+            "Practical",
+            "Detail-oriented",
+            "Traditional",
+            "Methodical",
+            "Responsible"
+        ],
+        "challenges": [
+            "Can be inflexible",
+            "Resistant to change",
+            "May judge quickly",
+            "Difficulty with ambiguity"
+        ],
+        "description": "ISTJs are responsible organizers, driven to create and enforce order within systems and institutions. They are neat and orderly, inside and out, and tend to have a procedure for everything they do.",
+        "key_traits": [
+            "Practical",
+            "Organized",
+            "Dutiful"
+        ],
+        "tarot_associations": {
+            "court_card": "King of Pentacles",
+            "meanings": [
+                "Practicality",
+                "Reliability",
+                "Tradition"
+            ],
+            "upright_meanings": [
+                "Material success",
+                "Financial security",
+                "Practical wisdom",
+                "Reliable leadership"
+            ],
+            "reversed_meanings": [
+                "Materialism",
+                "Inflexibility",
+                "Stubbornness",
+                "Risk aversion"
+            ]
+        }
+    },
+    "ISFJ": {
+        "name": "The Defender",
+        "strengths": [
+            "Supportive",
+            "Reliable",
+            "Patient",
+            "Detail-oriented",
+            "Traditional",
+            "Practical help",
+            "Observation"
+        ],
+        "challenges": [
+            "Can take criticism personally",
+            "Avoid conflict",
+            "Difficulty with change",
+            "Self-sacrifice"
+        ],
+        "description": "ISFJs are industrious caretakers, loyal to traditions and organizations. They are practical, compassionate, and caring, and are motivated to serve others and protect them from life's difficulties.",
+        "key_traits": [
+            "Nurturing",
+            "Loyal",
+            "Traditional"
+        ],
+        "tarot_associations": {
+            "court_card": "Queen of Pentacles",
+            "meanings": [
+                "Nurturing",
+                "Practical care",
+                "Material comfort"
+            ],
+            "upright_meanings": [
+                "Nurturing abundance",
+                "Practical support",
+                "Down-to-earth wisdom",
+                "Material security"
+            ],
+            "reversed_meanings": [
+                "Overprotectiveness",
+                "Materialism",
+                "Smothering care",
+                "Neglect of self"
+            ]
+        }
+    },
+    "ESTJ": {
+        "name": "The Executive",
+        "strengths": [
+            "Organized",
+            "Leadership ability",
+            "Dedicated",
+            "Direct",
+            "Traditional",
+            "Efficient",
+            "Practical"
+        ],
+        "challenges": [
+            "Can be inflexible",
+            "May be judgmental",
+            "Difficulty with emotion",
+            "Stubborn tendencies"
+        ],
+        "description": "ESTJs are hardworking traditionalists, eager to take charge in organizing projects and people. They are orderly, rule-abiding, and conscientious in their work.",
+        "key_traits": [
+            "Organized",
+            "Practical",
+            "Traditional"
+        ],
+        "tarot_associations": {
+            "court_card": "King of Pentacles",
+            "meanings": [
+                "Material success",
+                "Practical leadership",
+                "Stability"
+            ],
+            "upright_meanings": [
+                "Business acumen",
+                "Financial stability",
+                "Practical authority",
+                "Material achievement"
+            ],
+            "reversed_meanings": [
+                "Rigid control",
+                "Materialistic focus",
+                "Abuse of power",
+                "Financial loss"
+            ]
+        }
+    },
+    "ESFJ": {
+        "name": "The Consul",
+        "strengths": [
+            "Caring",
+            "Loyal",
+            "Organized",
+            "Practical",
+            "Traditional",
+            "Social skills",
+            "Supporting others"
+        ],
+        "challenges": [
+            "Can be needy",
+            "Sensitive to criticism",
+            "Inflexible",
+            "Difficulty with change"
+        ],
+        "description": "ESFJs are caring, social, and organized, focused on maintaining harmony in their environment. They value security and stability, and are eager to preserve the welfare of others.",
+        "key_traits": [
+            "Supportive",
+            "Organized",
+            "Traditional"
+        ],
+        "tarot_associations": {
+            "court_card": "Queen of Cups",
+            "meanings": [
+                "Emotional support",
+                "Nurturing",
+                "Social harmony"
+            ],
+            "upright_meanings": [
+                "Emotional nurturing",
+                "Intuitive guidance",
+                "Compassionate care",
+                "Social connection"
+            ],
+            "reversed_meanings": [
+                "Emotional dependency",
+                "Martyrdom",
+                "Smothering love",
+                "Emotional manipulation"
+            ]
+        }
+    },
+    "ISTP": {
+        "name": "The Virtuoso",
+        "strengths": [
+            "Optimistic",
+            "Creative",
+            "Practical",
+            "Learning by doing",
+            "Problem-solving",
+            "Technical skills",
+            "Adaptability"
+        ],
+        "challenges": [
+            "Can be insensitive",
+            "Risk-taking",
+            "Difficulty with commitment",
+            "Impulsiveness"
+        ],
+        "description": "ISTPs are observant artisans with an understanding of mechanics and an interest in troubleshooting. They approach their environments with a flexible logic, looking for practical solutions to problems.",
+        "key_traits": [
+            "Practical",
+            "Adaptable",
+            "Technical"
+        ],
+        "tarot_associations": {
+            "court_card": "Knight of Pentacles",
+            "meanings": [
+                "Skilled work",
+                "Patience",
+                "Reliability"
+            ],
+            "upright_meanings": [
+                "Methodical progress",
+                "Practical skills",
+                "Patient dedication",
+                "Reliable action"
+            ],
+            "reversed_meanings": [
+                "Perfectionism",
+                "Procrastination",
+                "Boredom",
+                "Lack of progress"
+            ]
+        }
+    },
+    "ISFP": {
+        "name": "The Adventurer",
+        "strengths": [
+            "Artistic",
+            "Creative",
+            "Sensitive",
+            "Adaptable",
+            "Imaginative",
+            "Aesthetic sense",
+            "Harmony"
+        ],
+        "challenges": [
+            "Easily stressed",
+            "Overly competitive",
+            "Unpredictable",
+            "Difficulty with planning"
+        ],
+        "description": "ISFPs are gentle caretakers who live in the present moment and enjoy their surroundings with cheerful, low-key enthusiasm. They are flexible, spontaneous, and adaptable.",
+        "key_traits": [
+            "Artistic",
+            "Sensitive",
+            "Adventurous"
+        ],
+        "tarot_associations": {
+            "court_card": "Page of Pentacles",
+            "meanings": [
+                "New opportunities",
+                "Manifestation",
+                "Learning"
+            ],
+            "upright_meanings": [
+                "New skills",
+                "Practical opportunity",
+                "Student mindset",
+                "Manifestation beginning"
+            ],
+            "reversed_meanings": [
+                "Lack of focus",
+                "Missed opportunities",
+                "Procrastination",
+                "Unrealistic goals"
+            ]
+        }
+    },
+    "ESTP": {
+        "name": "The Entrepreneur",
+        "strengths": [
+            "Energetic",
+            "Action-oriented",
+            "Adaptable",
+            "Resourceful",
+            "Perceptive",
+            "Risk-taking",
+            "Problem-solving"
+        ],
+        "challenges": [
+            "Can be insensitive",
+            "Risk-taking",
+            "May miss details",
+            "Impatience"
+        ],
+        "description": "ESTPs are energetic thrill-seekers who are at their best when putting out fires, whether literal or metaphorical. They bring a sense of dynamic energy to their interactions.",
+        "key_traits": [
+            "Energetic",
+            "Practical",
+            "Spontaneous"
+        ],
+        "tarot_associations": {
+            "court_card": "Knight of Wands",
+            "meanings": [
+                "Adventure",
+                "Risk-taking",
+                "Action"
+            ],
+            "upright_meanings": [
+                "Bold action",
+                "Adventure",
+                "Passionate pursuit",
+                "Energy in motion"
+            ],
+            "reversed_meanings": [
+                "Recklessness",
+                "Scattered energy",
+                "Delays",
+                "Impulsiveness"
+            ]
+        }
+    },
+    "ESFP": {
+        "name": "The Entertainer",
+        "strengths": [
+            "Enthusiastic",
+            "Spontaneous",
+            "Friendly",
+            "Adaptable",
+            "Lively",
+            "People skills",
+            "Showmanship"
+        ],
+        "challenges": [
+            "Easily bored",
+            "Poor planning",
+            "Difficulty with routine",
+            "Impulsiveness"
+        ],
+        "description": "ESFPs are vivacious entertainers who charm and engage those around them. They are spontaneous, energetic, and fun-loving, and take pleasure in the things around them.",
+        "key_traits": [
+            "Spontaneous",
+            "Fun-loving",
+            "Enthusiastic"
+        ],
+        "tarot_associations": {
+            "court_card": "Page of Wands",
+            "meanings": [
+                "New inspiration",
+                "Enthusiasm",
+                "Creativity"
+            ],
+            "upright_meanings": [
+                "New inspiration",
+                "Creative spark",
+                "Enthusiasm",
+                "Free spirit"
+            ],
+            "reversed_meanings": [
+                "Lack of direction",
+                "Scattered energy",
+                "Blocked creativity",
+                "Immaturity"
+            ]
+        }
+    }
+}

@@ -1,0 +1,402 @@
+{
+    "Sceptres": {
+        "King of Sceptres": {
+            "description": "Man living in the country, Country Gentleman",
+            "meaning": {
+                "upright": "Knowledge, Education, Leadership",
+                "reversed": "A naturally good but severe man, Counsel, Advice"
+            }
+        },
+        "Queen of Sceptres": {
+            "description": "Woman living in the country, Lady of the Manor",
+            "meaning": {
+                "upright": "Love of Money, Resourcefulness, Abundance",
+                "reversed": "A good and virtuous Woman, but strict and economical"
+            }
+        },
+        "Knight of Sceptres": {
+            "description": "Young man on a journey",
+            "meaning": {
+                "upright": "Departure, Movement, Adventure",
+                "reversed": "Discord, Interruption, Indecision"
+            }
+        },
+        "Page of Sceptres": {
+            "description": "Young person bringing news",
+            "meaning": {
+                "upright": "Faithful lover, Messages, News",
+                "reversed": "Announcements, Bad news, Indecision"
+            }
+        },
+        "Ten of Sceptres": {
+            "description": "Completion, Fulfillment",
+            "meaning": {
+                "upright": "Confidence, Security, Honour, Good Faith",
+                "reversed": "Treachery, Subterfuge, Duplicity, Bar"
+            }
+        },
+        "Nine of Sceptres": {
+            "description": "Preparation, Readiness",
+            "meaning": {
+                "upright": "Order, Discipline, Good Arrangement, Disposition",
+                "reversed": "Obstacles, Crosses, Delay, Displeasure"
+            }
+        },
+        "Eight of Sceptres": {
+            "description": "Progress, Advancement",
+            "meaning": {
+                "upright": "Understanding, Observation, Direction",
+                "reversed": "Quarrels, Intestine disputes, Discord"
+            }
+        },
+        "Seven of Sceptres": {
+            "description": "Challenge, Courage",
+            "meaning": {
+                "upright": "Success, Gain, Advantage, Profit, Victory",
+                "reversed": "Indecision, Doubt, Hesitation, Embarrassment, Anxiety"
+            }
+        },
+        "Six of Sceptres": {
+            "description": "Journey, Progress",
+            "meaning": {
+                "upright": "Attempt, Hope, Desire, Wish, Expectation",
+                "reversed": "Infidelity, Treachery, Disloyalty, Perfidy"
+            }
+        },
+        "Five of Sceptres": {
+            "description": "Conflict, Strife",
+            "meaning": {
+                "upright": "Gold, Opulence, Gain, Heritage, Riches, Fortune, Money",
+                "reversed": "Legal proceedings, Judgment, Law, Lawyer, Tribunal"
+            }
+        },
+        "Four of Sceptres": {
+            "description": "Rest, Recovery",
+            "meaning": {
+                "upright": "Society, Union, Association, Concord, Harmony",
+                "reversed": "Prosperity, Success, Happiness, Advantage"
+            }
+        },
+        "Three of Sceptres": {
+            "description": "Exploration, Discovery",
+            "meaning": {
+                "upright": "Enterprise, Undertaking, Commerce, Trade, Negotiation",
+                "reversed": "Hope, Desire, Attempt, Wish"
+            }
+        },
+        "Two of Sceptres": {
+            "description": "Balance, Harmony",
+            "meaning": {
+                "upright": "Riches, Fortune, Opulence, Magnificence, Grandeur",
+                "reversed": "Surprise, Astonishment, Event, Extraordinary Occurrence"
+            }
+        },
+        "Ace of Sceptres": {
+            "description": "Inspiration, Creativity",
+            "meaning": {
+                "upright": "Birth, Commencement, Beginning, Origin, Source",
+                "reversed": "Persecution, Pursuits Voilence, Vexation, Cruelty, Tyranny"
+            }
+        }
+    },
+    "Cups": {
+        "King of Cups": {
+            "description": "Fair man, Man of business, law, or divinity",
+            "meaning": {
+                "upright": "Creativity, Emotional balance, Diplomacy",
+                "reversed": "Scandals, Confusion, Emotional manipulation"
+            }
+        },
+        "Queen of Cups": {
+            "description": "Fair woman, Good and wise woman",
+            "meaning": {
+                "upright": "Intuition, Empathy, Emotional support",
+                "reversed": "Emotional instability, Moodiness"
+            }
+        },
+        "Knight of Cups": {
+            "description": "Young man arriving",
+            "meaning": {
+                "upright": "Romance, Charm, Imagination",
+                "reversed": "Fraud, False promises, Trickery"
+            }
+        },
+        "Page of Cups": {
+            "description": "Young person with a message",
+            "meaning": {
+                "upright": "New love, Creativity, Intuitive messages",
+                "reversed": "Emotional immaturity, Blocked creativity"
+            }
+        },
+        "Ten of Cups": {
+            "description": "Fulfillment, Wholeness",
+            "meaning": {
+                "upright": "The Town wherein one resides, Honour, Consideration, Esteem, Virtue, Glory, Reputation",
+                "reversed": "Combat, Strife, Opposition, Differences, Dispute"
+            }
+        },
+        "Nine of Cups": {
+            "description": "Happiness, Satisfaction",
+            "meaning": {
+                "upright": "Victory, Advantage, Success, Triumph, Difficulties surmounted",
+                "reversed": "Faults, Errors, Mistakes, Imperfections"
+            }
+        },
+        "Eight of Cups": {
+            "description": "Movement, Progress",
+            "meaning": {
+                "upright": "A fair Girl, Friendship, Attachment, Tenderness",
+                "reversed": "Gaiety, Feasting, Joy, Pleasure"
+            }
+        },
+        "Seven of Cups": {
+            "description": "Illusion, Deception",
+            "meaning": {
+                "upright": "Idea, Sentiment, Reflection, Project",
+                "reversed": "Plan, Design, Resolution, Decision"
+            }
+        },
+        "Six of Cups": {
+            "description": "Memories, Nostalgia",
+            "meaning": {
+                "upright": "The Past, passed by, Faded, Vanished, Disappeared",
+                "reversed": "The Future, that which is to come, Shortly, Soon"
+            }
+        },
+        "Five of Cups": {
+            "description": "Loss, Separation",
+            "meaning": {
+                "upright": "Union, Junction, Marriage, Inheritance",
+                "reversed": "Arrival, Return, News, Surprise, False projects"
+            }
+        },
+        "Four of Cups": {
+            "description": "Rest, Contemplation",
+            "meaning": {
+                "upright": "Ennui, Displeasure, Discontent, Dissatisfaction",
+                "reversed": "New Acquaintance, Conjecture, Sign, Presentiment"
+            }
+        },
+        "Three of Cups": {
+            "description": "Friendship, Celebration",
+            "meaning": {
+                "upright": "Success, Triumph, Victory, Favourable issue",
+                "reversed": "Expedition of business, Quickness, Celerity, Vigilance"
+            }
+        },
+        "Two of Cups": {
+            "description": "Partnership, Union",
+            "meaning": {
+                "upright": "Love, Attachment, Friendship, Sincerity, Affection",
+                "reversed": "Crossed desires, Obstacles, Opposition, Hindrance"
+            }
+        },
+        "Ace of Cups": {
+            "description": "Inspiration, Intuition",
+            "meaning": {
+                "upright": "Feasting, Banquet, Good Cheer",
+                "reversed": "Change, Novelty, Metamorphosis, Inconstancy"
+            }
+        }
+    },
+    "Swords": {
+        "King of Swords": {
+            "description": "Professional man, Judge or man of law",
+            "meaning": {
+                "upright": "Authority, Truth, Intellectual power",
+                "reversed": "Cruelty, Evil intentions, Perversity"
+            }
+        },
+        "Queen of Swords": {
+            "description": "Widowed or separated woman",
+            "meaning": {
+                "upright": "Quick wit, Independent, Clear communication",
+                "reversed": "Malice, Bigotry, Deceit"
+            }
+        },
+        "Knight of Swords": {
+            "description": "Skillful warrior or soldier",
+            "meaning": {
+                "upright": "Swift action, Courage, Skill",
+                "reversed": "Incapacity, Extravagance, Dispute"
+            }
+        },
+        "Page of Swords": {
+            "description": "Young person with a message",
+            "meaning": {
+                "upright": "New ideas, Curiosity, Communication",
+                "reversed": "Gossip, Lies, Deceit"
+            }
+        },
+        "Ten of Swords": {
+            "description": "Ruin, Defeat",
+            "meaning": {
+                "upright": "Tears, Affliction, Grief, Sorrow",
+                "reversed": "Passing Success, Momentary Advantage"
+            }
+        },
+        "Nine of Swords": {
+            "description": "Cruelty, Suffering",
+            "meaning": {
+                "upright": "An Ecclesiastic, a Priest, Conscience. Probity, Good Faith, Integrity",
+                "reversed": "Wise distrust, Suspicion, Fear, Doubt, Shady character"
+            }
+        },
+        "Eight of Swords": {
+            "description": "Trapped, Limited",
+            "meaning": {
+                "upright": "Sickness, Calumny, Criticism, Blame",
+                "reversed": "Treachery in the Past, Event, Accident, Remarkable Incident"
+            }
+        },
+        "Seven of Swords": {
+            "description": "Deception, Betrayal",
+            "meaning": {
+                "upright": "Hope, Confidence, Desire, Attempt, Wish",
+                "reversed": "Wise Advice, Good Counsel, Wisdom, Prudence, Circumspection"
+            }
+        },
+        "Six of Swords": {
+            "description": "Journey, Progress",
+            "meaning": {
+                "upright": "Envoy, Messenger, Voyage, Travel",
+                "reversed": "Declaration, Love proposed, Revelation, Surprise"
+            }
+        },
+        "Five of Swords": {
+            "description": "Defeat, Loss",
+            "meaning": {
+                "upright": "Mourning, Sadness, Affliction",
+                "reversed": "Losses Trouble (same signification, whether reversed or not.)"
+            }
+        },
+        "Four of Swords": {
+            "description": "Rest, Recovery",
+            "meaning": {
+                "upright": "Solitude, Retreat, Abandonment, Solitary, Hermit",
+                "reversed": "Economy, Precaution, Regulation of Expenditure"
+            }
+        },
+        "Three of Swords": {
+            "description": "Heartbreak, Sorrow",
+            "meaning": {
+                "upright": "A Nun, Separation, Removal, Rupture, Quarrel",
+                "reversed": "Error, Confusion, Misrule, Disorder"
+            }
+        },
+        "Two of Swords": {
+            "description": "Balance, Harmony",
+            "meaning": {
+                "upright": "Friendship, Valour, Firmness, Courage",
+                "reversed": "False Friends, Treachery, Lies"
+            }
+        },
+        "Ace of Swords": {
+            "description": "Inspiration, Clarity",
+            "meaning": {
+                "upright": "Triumph, Fecundity, Fertility, Prosperity",
+                "reversed": "Embarrassment, Foolish and Hopeless Love, Obstacle, Hindrance"
+            }
+        }
+    },
+    "Pentacles": {
+        "King of Pentacles": {
+            "description": "Dark man, Merchant, Businessman",
+            "meaning": {
+                "upright": "Abundance, Security, Power",
+                "reversed": "Vice, Weakness, Perversity"
+            }
+        },
+        "Queen of Pentacles": {
+            "description": "Dark woman, Generous and kind woman",
+            "meaning": {
+                "upright": "Practicality, Abundance, Nurturing",
+                "reversed": "Mistrust, Suspicion, Doubt"
+            }
+        },
+        "Knight of Pentacles": {
+            "description": "Useful and trustworthy person",
+            "meaning": {
+                "upright": "Reliability, Hard work, Routine",
+                "reversed": "Stagnation, Boredom, Laziness"
+            }
+        },
+        "Page of Pentacles": {
+            "description": "Young person with a message",
+            "meaning": {
+                "upright": "New opportunity, Study, Manifestation",
+                "reversed": "Lack of progress, Procrastination"
+            }
+        },
+        "Ten of Pentacles": {
+            "description": "Completion, Fulfillment",
+            "meaning": {
+                "upright": "House, Dwelling, Habitation, Family",
+                "reversed": "Gambling, Dissipation, Robbery, Loss"
+            }
+        },
+        "Nine of Pentacles": {
+            "description": "Harvest, Fulfillment",
+            "meaning": {
+                "upright": "Discretion, Circumspection, Prudence, Discernment",
+                "reversed": "Deceit, Bad faith, Artifices, Deception"
+            }
+        },
+        "Eight of Pentacles": {
+            "description": "Skill, Craftsmanship",
+            "meaning": {
+                "upright": "A dark Girl, Beauty, Candour, Chastity, Innocence, Modesty",
+                "reversed": "Flattery, Usury, Hypocrisy, Shifty"
+            }
+        },
+        "Seven of Pentacles": {
+            "description": "Evaluation, Assessment",
+            "meaning": {
+                "upright": "Money, Finance, Treasure, Gain, Profit",
+                "reversed": "Disturbance, Worry, Anxiety, Melancholy"
+            }
+        },
+        "Six of Pentacles": {
+            "description": "Exchange, Trade",
+            "meaning": {
+                "upright": "Presents, Gifts, Gratification",
+                "reversed": "Ambition, Desire, Passion, Aim, Longing"
+            }
+        },
+        "Five of Pentacles": {
+            "description": "Need, Lack",
+            "meaning": {
+                "upright": "Lover or Mistress, Love, Sweetness, Affection, Pure and Chaste Love",
+                "reversed": "Disgraceful Love, Imprudence, License, Profligacy"
+            }
+        },
+        "Four of Pentacles": {
+            "description": "Security, Stability",
+            "meaning": {
+                "upright": "Pleasure, Gaiety, Enjoyment, Satisfaction",
+                "reversed": "Obstacles, Hindrances"
+            }
+        },
+        "Three of Pentacles": {
+            "description": "Skill, Craftsmanship",
+            "meaning": {
+                "upright": "Nobility, Elevation, Dignity, Rank, Power",
+                "reversed": "Children, Sons, Daughters, Youths, Commencement"
+            }
+        },
+        "Two of Pentacles": {
+            "description": "Balance, Harmony",
+            "meaning": {
+                "upright": "Embarrassment, Worry, Difficulties",
+                "reversed": "Letter, Missive, Epistle, Message"
+            }
+        },
+        "Ace of Pentacles": {
+            "description": "Inspiration, Manifestation",
+            "meaning": {
+                "upright": "Perfect Contentment, Felicity, Prosperity, Triumph",
+                "reversed": "Purse of Gold, Money, Gain, Help, Profit, Riches"
+            }
+        }
+    }
+}

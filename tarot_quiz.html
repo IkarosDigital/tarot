@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mystic Personality Oracle</title>
+    <link rel="stylesheet" href="tarot_quiz.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <nav>
+                <div class="logo">🔮 Mystic Tarot NFT</div>
+                <div class="wallet-status">
+                    <span id="walletAddress" class="wallet-address"></span>
+                </div>
+            </nav>
+        </header>
+
+        <main class="quiz-container" style="display: none;">
+            <h1>🔮 The Mystic Personality Oracle</h1>
+            
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="questions-container">
+                <!-- Questions will be dynamically loaded here -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation-buttons">
+                <button id="prevBtn" onclick="previousQuestion()">Previous</button>
+                <button id="nextBtn" onclick="nextQuestion()">Next</button>
+            </div>
+        </main>
+
+        <!-- Results Container -->
+        <div id="result" style="display: none;">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loadingMessage">Consulting the cards...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+    <script src="js/web3-client.js"></script>
+    <script>
+        // At the top of your script
+        const progress = document.getElementById('progress');
+        const progressFill = document.querySelector('.progress-fill');
+        const restartBtn = document.querySelector('.restart-btn');
+
+        const tarotAssociations = {
+            'INTP': { card: 'The Magician', symbol: '🎭', meaning: 'Mastery of knowledge and manifestation of ideas' },
+            'INTJ': { card: 'The Hermit', symbol: '🏮', meaning: 'Inner wisdom and strategic vision' },
+            'INFP': { card: 'The Moon', symbol: '🌙', meaning: 'Deep intuition and creative imagination' },
+            'INFJ': { card: 'The High Priestess', symbol: '👑', meaning: 'Inner knowing and spiritual insight' },
+            'ISTP': { card: 'The Hanged Man', symbol: '🌟', meaning: 'Seeing from new perspectives and practical wisdom' },
+            'ISTJ': { card: 'Justice', symbol: '⚖️', meaning: 'Order, structure, and fair judgment' },
+            'ISFP': { card: 'The Star', symbol: '⭐', meaning: 'Authentic expression and artistic inspiration' },
+            'ISFJ': { card: 'The Empress', symbol: '👸', meaning: 'Nurturing care and practical support' },
+            'ENTP': { card: 'The Fool', symbol: '🃏', meaning: 'Innovation and boundless possibilities' },
+            'ENTJ': { card: 'The Emperor', symbol: '👑', meaning: 'Leadership and strategic command' },
+            'ENFP': { card: 'The Sun', symbol: '☀️', meaning: 'Enthusiasm and creative energy' },
+            'ENFJ': { card: 'The Hierophant', symbol: '🎭', meaning: 'Teaching and inspiring others' },
+            'ESTP': { card: 'The Chariot', symbol: '🏃', meaning: 'Action and dynamic movement' },
+            'ESTJ': { card: 'The Tower', symbol: '🗼', meaning: 'Structure and systematic change' },
+            'ESFP': { card: 'The World', symbol: '🌍', meaning: 'Joy and experiencing life fully' },
+            'ESFJ': { card: 'Temperance', symbol: '🕊️', meaning: 'Harmony and social connection' }
+        };
+
+        const questions = [
+            {
+                text: "How do you typically recharge?",
+                options: [
+                    { text: "By spending time with others", score: { E: 2, I: 0 } },
+                    { text: "By spending time alone", score: { I: 2, E: 0 } }
+                ]
+            },
+            {
+                text: "In your work style, you:",
+                options: [
+                    { text: "Prefer clear deadlines and organization", score: { J: 2 } },
+                    { text: "Adapt as you go and stay flexible", score: { P: 2 } }
+                ]
+            },
+            {
+                text: "When making decisions, you rely on:",
+                options: [
+                    { text: "Logic and objective analysis", score: { T: 2 } },
+                    { text: "Your values and intuition", score: { F: 2 } }
+                ]
+            },
+            {
+                text: "In social situations, you:",
+                options: [
+                    { text: "Enjoy meeting new people and being the center of attention", score: { E: 2 } },
+                    { text: "Prefer to observe and listen before contributing", score: { I: 2 } }
+                ]
+            },
+            {
+                text: "When working on a project, you:",
+                options: [
+                    { text: "Focus on the details and plan carefully", score: { S: 2 } },
+                    { text: "Look at the big picture and explore possibilities", score: { N: 2 } }
+                ]
+            }
+        ];
+        // Constants and Configuration
+        const CONSTANTS = {
+            ANIMATION_DURATION: 500,
+            MIN_SCORE: 0,
+            MAX_QUESTIONS: questions.length,
+            PROGRESS_UPDATE_DELAY: 300
+        };
+
+        // DOM Elements Cache
+        const DOM = {
+            quiz: document.getElementById('questions-container'),
+            result: document.getElementById('result'),
+            progress: document.getElementById('progress'),
+            buttons: {
+                prev: document.getElementById('prevBtn'),
+                next: document.getElementById('nextBtn')
+            }
+        };
+
+        // Application State
+        const state = {
+            currentQuestion: 0,
+            answers: new Array(questions.length).fill(null),
+            scores: { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 },
+            isLoading: false
+        };
+
+        // Error Handling
+        function handleError(error) {
+            console.error('Quiz Error:', error);
+            DOM.result.innerHTML = `
+        <div class="error-message">
+            <p>An error occurred: ${error.message}</p>
+            <button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    `;
+        }
+
+        // Data Validation
+        function validateData() {
+            try {
+                if (!questions || !questions.length) {
+                    throw new Error('Questions not properly loaded');
+                }
+                if (!tarotAssociations) {
+                    throw new Error('Tarot associations not properly loaded');
+                }
+                return true;
+            } catch (error) {
+                handleError(error);
+                return false;
+            }
+        }
+
+        // Loading State Management
+        function setLoading(isLoading) {
+            state.isLoading = isLoading;
+            document.body.classList.toggle('loading', isLoading);
+            DOM.buttons.prev.disabled = isLoading;
+            DOM.buttons.next.disabled = isLoading;
+        }
+
+        // Progress Management
+        function updateProgress() {
+            const progress = (state.currentQuestion / (CONSTANTS.MAX_QUESTIONS - 1)) * 100;
+            requestAnimationFrame(() => {
+                DOM.progress.style.width = `${progress}%`;
+            });
+        }
+
+        // Navigation Functions
+        function showQuestion(index) {
+            if (index < 0 || index >= CONSTANTS.MAX_QUESTIONS) return;
+
+            const questionHTML = `
+                <div class="question-container">
+                    <h2>${questions[index].text}</h2>
+                    <div class="options">
+                        ${questions[index].options.map((option, i) => `
+                            <button class="option" onclick="handleAnswer(${i})">${option.text}</button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            DOM.quiz.innerHTML = questionHTML;
+
+            state.currentQuestion = index;
+            updateProgress();
+            updateNavigationButtons();
+        }
+
+        function nextQuestion() {
+            if (state.currentQuestion < CONSTANTS.MAX_QUESTIONS - 1) {
+                showQuestion(state.currentQuestion + 1);
+            } else if (isQuizComplete()) {
+                calculateResult();
+            }
+        }
+
+        function previousQuestion() {
+            if (state.currentQuestion > 0) {
+                showQuestion(state.currentQuestion - 1);
+            }
+        }
+
+        function updateNavigationButtons() {
+            DOM.buttons.prev.disabled = state.currentQuestion === 0;
+            DOM.buttons.next.disabled = state.currentQuestion === CONSTANTS.MAX_QUESTIONS - 1 && !isQuizComplete();
+        }
+
+        // Score Calculation
+        function calculateScores() {
+            const scores = { ...state.scores };
+            state.answers.forEach(answer => {
+                if (answer) {
+                    Object.entries(answer).forEach(([key, value]) => {
+                        scores[key] = (scores[key] || 0) + value;
+                    });
+                }
+            });
+            return scores;
+        }
+
+        function determineType(scores) {
+            return [
+                scores.E > scores.I ? 'E' : 'I',
+                scores.S > scores.N ? 'S' : 'N',
+                scores.T > scores.F ? 'T' : 'F',
+                scores.J > scores.P ? 'J' : 'P'
+            ].join('');
+        }
+
+        // Results Display
+        function displayResults(type) {
+            const tarot = tarotAssociations[type];
+            if (!tarot) throw new Error('Invalid personality type');
+
+            const scores = calculateScores();
+            DOM.result.innerHTML = `
+        <div class="tarot-symbol">${tarot.symbol}</div>
+        <h2>${type}: ${tarot.card}</h2>
+        <p class="tarot-meaning">${tarot.meaning}</p>
+        <div class="strength-indicator">
+            <h3>✨ Your Mystic Alignments ✨</h3>
+            <div class="dimension-bar">
+                <span>Extraversion - Introversion</span>
+                <div class="dimension-fill" style="width: ${calculatePercentage(scores.E, scores.E + scores.I)}%"></div>
+            </div>
+            <div class="dimension-bar">
+                <span>Sensing - Intuition</span>
+                <div class="dimension-fill" style="width: ${calculatePercentage(scores.S, scores.S + scores.N)}%"></div>
+            </div>
+            <div class="dimension-bar">
+                <span>Thinking - Feeling</span>
+                <div class="dimension-fill" style="width: ${calculatePercentage(scores.T, scores.T + scores.F)}%"></div>
+            </div>
+            <div class="dimension-bar">
+                <span>Judging - Perceiving</span>
+                <div class="dimension-fill" style="width: ${calculatePercentage(scores.J, scores.J + scores.P)}%"></div>
+            </div>
+        </div>
+        <button onclick="restartQuiz()" class="restart-btn">Take Quiz Again 🔄</button>
+    `;
+        }
+
+        // Quiz State Management
+        function isQuizComplete() {
+            return state.answers.every(answer => answer !== null);
+        }
+
+        function calculateResult() {
+            try {
+                if (!isQuizComplete()) {
+                    throw new Error('Please answer all questions before viewing results');
+                }
+
+                setLoading(true);
+                const scores = calculateScores();
+                const type = determineType(scores);
+
+                DOM.quiz.style.display = 'none';
+                DOM.buttons.prev.style.display = 'none';
+                DOM.buttons.next.style.display = 'none';
+                DOM.result.style.display = 'block';
+
+                displayResults(type);
+            } catch (error) {
+                handleError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function restartQuiz() {
+            state.currentQuestion = 0;
+            state.answers = new Array(CONSTANTS.MAX_QUESTIONS).fill(null);
+            state.scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+            DOM.quiz.style.display = 'block';
+            DOM.buttons.prev.style.display = 'block';
+            DOM.buttons.next.style.display = 'block';
+            DOM.result.style.display = 'none';
+
+            showQuestion(0);
+            updateProgress();
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!validateData()) return;
+
+            // Add event listeners for navigation buttons
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            nextBtn.addEventListener('click', nextQuestion);
+            prevBtn.addEventListener('click', previousQuestion);
+
+            initializeQuiz();
+        });
+
+        // Initialize
+        function initializeQuiz() {
+            setLoading(true);
+            try {
+                showQuestion(0);
+                updateProgress();
+            } catch (error) {
+                handleError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function handleAnswer(index) {
+            state.answers[state.currentQuestion] = questions[state.currentQuestion].options[index].score;
+            nextQuestion();
+        }
+
+        function calculatePercentage(score, total) {
+            return (score / total) * 100;
+        }
+    </script>
+</body>
+</html>

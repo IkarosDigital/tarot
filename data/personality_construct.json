@@ -1,0 +1,102 @@
+[
+  {
+    "construct_name": "INTJ - The Architect",
+    "description": "A strategic thinker with a vision for the future, known for their independence and high standards.",
+    "key_traits": [
+      "Analytical",
+      "Independent",
+      "Perfectionist"
+    ],
+    "strengths": [
+      "Strategic planning",
+      "Problem-solving",
+      "High ethical standards"
+    ],
+    "weaknesses": [
+      "Can be overly critical",
+      "Might struggle with emotional expression"
+    ],
+    "tarot_associations": {
+      "court_card": "Queen of Wands",
+      "meanings": {
+        "upright": "Reasonable and independent, holds high ethical standards.",
+        "reversed": "Can be a perfectionist with ulterior motives."
+      }
+    }
+  },
+  {
+    "construct_name": "INFP - The Mediator",
+    "description": "A compassionate idealist who values authenticity and seeks harmony in relationships.",
+    "key_traits": [
+      "Empathetic",
+      "Introspective",
+      "Creative"
+    ],
+    "strengths": [
+      "Deeply caring and supportive",
+      "Strong sense of values",
+      "Imaginative problem-solver"
+    ],
+    "weaknesses": [
+      "Can be overly sensitive",
+      "Struggles with practicality"
+    ],
+    "tarot_associations": {
+      "court_card": "Knight of Cups",
+      "meanings": {
+        "upright": "Inspiring with sharp intuition and emotional depth.",
+        "reversed": "May indicate emotional confusion or unrealistic expectations."
+      }
+    }
+  },
+  {
+    "construct_name": "ENTJ - The Commander",
+    "description": "A natural leader who is decisive and enjoys challenges, often seen as assertive and confident.",
+    "key_traits": [
+      "Confident",
+      "Strategic",
+      "Decisive"
+    ],
+    "strengths": [
+      "Excellent at organizing and leading",
+      "Strong problem-solving skills",
+      "Ability to inspire others"
+    ],
+    "weaknesses": [
+      "Can be overly critical of others",
+      "May struggle with emotional connections"
+    ],
+    "tarot_associations": {
+      "court_card": "King of Wands",
+      "meanings": {
+        "upright": "A visionary leader with creativity and ambition.",
+        "reversed": "May indicate arrogance or impulsiveness."
+      }
+    }
+  },
+  {
+    "construct_name": "ISFJ - The Defender",
+    "description": "A nurturing and responsible individual who values tradition and loyalty, often seen as a caretaker.",
+    "key_traits": [
+      "Caring",
+      "Dutiful",
+      "Supportive"
+    ],
+    "strengths": [
+      "Highly reliable and trustworthy",
+      "Strong attention to detail",
+      "Deeply empathetic"
+    ],
+    "weaknesses": [
+      "Can be overly self-sacrificing",
+      "Struggles with change"
+    ],
+    "tarot_associations": {
+      "court_card": "Queen of Pentacles",
+      "meanings": {
+        "upright": "Embodies nurturing and practical support.",
+        "reversed": "May indicate neglect of personal needs."
+      }
+    }
+  }
+]
